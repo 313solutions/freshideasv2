@@ -24,7 +24,7 @@
         }
         .font-chic { font-family: 'Playfair Display', serif; }
 
-        /* Cursor Bec - Fără contur */
+        /* Cursor Bec curat */
         #cursor {
             position: fixed;
             pointer-events: none;
@@ -36,31 +36,27 @@
         
         #cursor i {
             font-size: 18px;
-            color: rgba(255, 255, 255, 0.9);
-            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
+            color: rgba(255, 255, 255, 0.95);
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.4));
         }
 
-        /* Lumina de sub cursor - Mai mică și Dimmed */
+        /* Lumina de sub cursor - Marime ok, intensitate crescuta cu ~10% */
         #cursor-glow {
             width: 180px; 
             height: 180px;
-            background: radial-gradient(circle, rgba(165, 180, 252, 0.08) 0%, transparent 60%);
+            background: radial-gradient(circle, rgba(165, 180, 252, 0.18) 0%, transparent 65%);
             position: fixed;
             pointer-events: none;
             z-index: 9998;
             transform: translate(-50%, -50%);
-            transition: opacity 0.3s ease;
         }
 
-        /* Navigație curată - Eliminat Blur-ul care strica scroll-ul */
-        nav {
-            background: transparent;
-        }
+        nav { background: transparent; }
 
         .reveal-img {
             overflow: hidden;
             position: relative;
-            transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+            transition: all 1.2s cubic-bezier(0.19, 1, 0.22, 1);
         }
 
         .text-outline {
@@ -81,10 +77,11 @@
     <nav class="absolute top-0 left-0 w-full z-50 px-10 py-10 flex justify-between items-center">
         <a href="index.html" class="text-xl font-bold tracking-[0.3em] flex items-center gap-4">
             <span class="w-1.5 h-1.5 bg-indigo-400 rounded-full"></span>
-            FRESH IDEAS<span class="font-chic italic text-zinc-500 font-light lowercase">.studio</span>
+            FRESH IDEAS<span class="font-chic italic text-zinc-500 font-light lowercase">.fresh</span>
         </a>
-        <div class="hidden md:flex gap-16 text-[11px] uppercase tracking-[0.4em] font-semibold text-zinc-400">
+        <div class="hidden md:flex gap-12 text-[11px] uppercase tracking-[0.4em] font-semibold text-zinc-400">
             <a href="projects.html" class="hover:text-indigo-300 transition-colors">Proiecte</a>
+            <a href="team.html" class="hover:text-indigo-300 transition-colors">Echipa</a>
             <a href="#expertiza" class="hover:text-white transition-colors">Expertiză</a>
             <a href="#contact" class="text-indigo-400">Colaborare</a>
         </div>
@@ -123,23 +120,21 @@
                 <div class="grid md:grid-cols-2 gap-32">
                     <div class="group relative">
                         <div class="reveal-img aspect-[3/4] rounded-2xl mb-12 shadow-2xl overflow-hidden bg-zinc-900">
-                            <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?q=80&w=1200" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition duration-[1.5s] ease-out" alt="Medical & Farmaceutic">
+                            <img src="https://images.unsplash.com/photo-1631549916768-4119b2e5f926?q=80&w=1200" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition duration-[1.5s] ease-out" alt="Medical & Farmaceutic">
                         </div>
                         <div class="space-y-4">
-                            <h3 class="text-4xl font-light tracking-tight">Știință de Precizie</h3>
-                            <p class="text-zinc-500 text-xs uppercase tracking-widest">Medical & Farmaceutic</p>
+                            <h3 class="text-4xl font-light tracking-tight">Medical & Farmaceutic</h3>
                             <p class="text-zinc-400 leading-relaxed max-w-sm">Design bazat pe rigoare, transformând datele complexe în identități vizuale care inspiră încredere absolută.</p>
                         </div>
                     </div>
 
                     <div class="group relative md:mt-48">
                         <div class="reveal-img aspect-[3/4] rounded-2xl mb-12 shadow-2xl overflow-hidden bg-zinc-900">
-                            <img src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?q=80&w=1200" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition duration-[1.5s] ease-out" alt="Cosmetics Design">
+                            <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=1200" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition duration-[1.5s] ease-out" alt="Cosmetice AVON">
                         </div>
                         <div class="space-y-4">
-                            <h3 class="text-4xl font-light tracking-tight">Alură Vizuală</h3>
-                            <p class="text-zinc-500 text-xs uppercase tracking-widest">Cosmetice & Parfumuri</p>
-                            <p class="text-zinc-400 leading-relaxed max-w-sm">Arhitectură de brand premium unde estetica devine principalul motor de dorință în segmentul beauty.</p>
+                            <h3 class="text-4xl font-light tracking-tight">Cosmetice & Parfumuri</h3>
+                            <p class="text-zinc-400 leading-relaxed max-w-sm">Arhitectură de brand premium unde estetica devine principalul motor de dorință, dezvoltată în parteneriat cu lideri precum AVON.</p>
                         </div>
                     </div>
                 </div>
@@ -185,8 +180,8 @@
                     <a href="#" class="hover:text-white transition-colors">Dribbble</a>
                 </div>
                 <div class="mt-32 text-left md:text-right">
-                    <p class="text-zinc-700 text-[10px] tracking-widest uppercase mb-4">Fresh Ideas Studio © 2026</p>
-                    <p class="text-zinc-500 text-xs italic">Creativitate Boutique. Impact Global.</p>
+                    <p class="text-zinc-700 text-[10px] tracking-widest uppercase mb-4">Fresh Ideas © 2026</p>
+                    <p class="text-zinc-500 text-xs italic">Creativitate Pură. Impact Global.</p>
                 </div>
             </div>
         </div>
@@ -208,11 +203,11 @@
         document.querySelectorAll('a, button, .group').forEach(el => {
             el.addEventListener('mouseenter', () => {
                 cursor.style.transform = 'translate(-50%, -50%) scale(1.3)';
-                glow.style.background = 'radial-gradient(circle, rgba(165, 180, 252, 0.12) 0%, transparent 60%)';
+                glow.style.background = 'radial-gradient(circle, rgba(165, 180, 252, 0.22) 0%, transparent 65%)';
             });
             el.addEventListener('mouseleave', () => {
                 cursor.style.transform = 'translate(-50%, -50%) scale(1)';
-                glow.style.background = 'radial-gradient(circle, rgba(165, 180, 252, 0.08) 0%, transparent 60%)';
+                glow.style.background = 'radial-gradient(circle, rgba(165, 180, 252, 0.18) 0%, transparent 65%)';
             });
         });
     </script>
