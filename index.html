@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="ro" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,37 +13,52 @@
         :root { 
             --bg: #0c0c0c; 
             --accent: #d4d4d8; 
-            --highlight: #818cf8; /* Soft Indigo for a medical/beauty bridge */
+            --highlight: #818cf8;
         }
         body { 
             font-family: 'Space Grotesk', sans-serif; 
             background-color: var(--bg); 
             color: #f4f4f5;
-            cursor: none; /* Custom cursor for that chic studio feel */
+            cursor: none;
         }
         .font-chic { font-family: 'Playfair Display', serif; }
 
-        /* Custom Cursor Spotlight */
+        /* Cursor sub formă de beculeț semi-transparent */
         #cursor {
-            width: 20px; height: 20px;
-            background: #fff;
+            width: 30px; 
+            height: 30px;
+            background: rgba(255, 255, 255, 0.2); /* Semi-transparent */
+            border: 1px solid rgba(255, 255, 255, 0.4);
             border-radius: 50%;
             position: fixed;
             pointer-events: none;
             z-index: 9999;
-            mix-blend-mode: difference;
-            transition: transform 0.2s ease;
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease-out;
         }
+        
+        /* Iconița de bec în interiorul cursorului */
+        #cursor i {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Lumina de sub cursor (Glow) */
         #cursor-glow {
-            width: 400px; height: 400px;
-            background: radial-gradient(circle, rgba(129, 140, 248, 0.08) 0%, transparent 70%);
+            width: 350px; 
+            height: 350px;
+            background: radial-gradient(circle, rgba(129, 140, 248, 0.15) 0%, transparent 70%);
             position: fixed;
             pointer-events: none;
             z-index: 9998;
             transform: translate(-50%, -50%);
+            transition: width 0.3s, height 0.3s;
         }
 
-        /* Editorial Image Hover */
         .reveal-img {
             overflow: hidden;
             position: relative;
@@ -54,12 +69,6 @@
             clip-path: inset(5% 5% 5% 5%);
         }
 
-        /* Glass Sidebar Navigation */
-        .side-nav {
-            border-right: 1px solid rgba(255,255,255,0.05);
-        }
-
-        /* Subtle Noise Overlay for Texture */
         .grain {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: url('https://grainy-gradients.vercel.app/noise.svg');
@@ -74,7 +83,7 @@
 </head>
 <body>
 
-    <div id="cursor"></div>
+    <div id="cursor"><i class="fa-solid fa-lightbulb"></i></div>
     <div id="cursor-glow"></div>
     <div class="grain"></div>
 
@@ -84,12 +93,10 @@
             FRESH IDEAS<span class="font-chic italic text-zinc-500 font-light lowercase">.studio</span>
         </a>
         <div class="hidden md:flex gap-12 text-[10px] uppercase tracking-[0.3em] font-medium text-zinc-400">
-    <a href="projects.html" class="hover:text-white transition text-white">Projects</a>
-    <a href="team.html" class="hover:text-white transition">The 10</a>
-    <a href="index.html#sectors" class="hover:text-white transition">Expertise</a>
-    <a href="index.html#contact" class="text-indigo-400">Collaborate</a>
-    <a href="projects.html" class="hover:text-white transition text-white">Projects</a>
-</div>
+            <a href="#proiecte" class="hover:text-white transition">Proiecte</a>
+            <a href="#expertiza" class="hover:text-white transition">Expertiză</a>
+            <a href="#contact" class="text-indigo-400">Colaborare</a>
+        </div>
     </nav>
 
     <main>
@@ -97,41 +104,41 @@
             <div class="max-w-7xl mx-auto w-full grid lg:grid-cols-12 gap-10">
                 <div class="lg:col-span-8">
                     <h1 class="text-[clamp(3.5rem,8vw,9rem)] leading-[0.9] font-medium tracking-tighter">
-                        CHIC <br> <span class="font-chic italic text-indigo-400">Aesthetics</span> <br> 
-                        <span class="text-outline">CLINICAL</span> <br> SOUL.
+                        ESTETICĂ <br> <span class="font-chic italic text-indigo-400">Chic</span> <br> 
+                        <span class="text-outline">SUFLET</span> <br> CLINIC.
                     </h1>
                 </div>
                 <div class="lg:col-span-4 flex flex-col justify-end pb-10">
                     <p class="text-lg text-zinc-400 leading-relaxed font-light mb-8">
-                        Fresh Ideas is a boutique design collective of 10. We specialize in the high-stakes intersection of <span class="text-white">Medical innovation</span> and <span class="text-white">Luxury beauty</span>.
+                        Fresh Ideas este un colectiv de design boutique. Suntem specializați în intersecția de înaltă miza dintre <span class="text-white">Inovația Medicală</span> și <span class="text-white">Frumusețea de Lux</span>.
                     </p>
                     <div class="flex gap-4">
                         <div class="w-12 h-px bg-zinc-700 mt-3"></div>
-                        <span class="text-[10px] uppercase tracking-widest text-zinc-500">Thinking Outside the Box <br>Since 2016</span>
+                        <span class="text-[10px] uppercase tracking-widest text-zinc-500">Gândim în afara cutiei <br>din 2016</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="sectors" class="py-40 bg-zinc-950 border-y border-white/5">
+        <section id="expertiza" class="py-40 bg-zinc-950 border-y border-white/5">
             <div class="max-w-7xl mx-auto px-10">
                 <div class="grid md:grid-cols-2 gap-20">
                     <div class="group">
                         <div class="reveal-img aspect-[4/5] bg-zinc-900 mb-10">
-                            <img src="https://images.unsplash.com/photo-1587854692152-cbe660dbbb88?q=80&w=1200" class="w-full h-full object-cover grayscale opacity-50 group-hover:opacity-100 group-hover:grayscale-0 transition duration-1000" alt="Pharma Design">
+                            <img src="https://images.unsplash.com/photo-1585435557343-3b092031a831?q=80&w=1200" class="w-full h-full object-cover grayscale opacity-50 group-hover:opacity-100 group-hover:grayscale-0 transition duration-1000" alt="Design Farmaceutic">
                         </div>
-                        <h3 class="text-3xl font-chic italic mb-4">Precision Science</h3>
-                        <p class="text-zinc-500 max-w-sm mb-6 uppercase text-[10px] tracking-widest font-bold">Medical & Pharmaceutical</p>
-                        <p class="text-zinc-400 leading-relaxed">Regulatory-compliant packaging, visual data simplification, and clinical trust-building for indie pharma labs.</p>
+                        <h3 class="text-3xl font-chic italic mb-4">Știință de Precizie</h3>
+                        <p class="text-zinc-500 max-w-sm mb-6 uppercase text-[10px] tracking-widest font-bold">Medical & Farmaceutic</p>
+                        <p class="text-zinc-400 leading-relaxed">Ambalaje conforme reglementărilor, simplificarea datelor vizuale și construirea încrederii clinice pentru laboratoare farma independente.</p>
                     </div>
 
                     <div class="group md:mt-40">
                         <div class="reveal-img aspect-[4/5] bg-zinc-900 mb-10">
-                            <img src="https://images.unsplash.com/photo-1596462502278-27bfdc4033c8?q=80&w=1200" class="w-full h-full object-cover grayscale opacity-50 group-hover:opacity-100 group-hover:grayscale-0 transition duration-1000" alt="Makeup Design">
+                            <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1200" class="w-full h-full object-cover grayscale opacity-50 group-hover:opacity-100 group-hover:grayscale-0 transition duration-1000" alt="Design Cosmetice">
                         </div>
-                        <h3 class="text-3xl font-chic italic mb-4">Visual Allure</h3>
-                        <p class="text-zinc-500 max-w-sm mb-6 uppercase text-[10px] tracking-widest font-bold">Cosmetics & Fragrance</p>
-                        <p class="text-zinc-400 leading-relaxed">High-editorial branding and packaging architecture that captures attention in a crowded retail landscape.</p>
+                        <h3 class="text-3xl font-chic italic mb-4">Alură Vizuală</h3>
+                        <p class="text-zinc-500 max-w-sm mb-6 uppercase text-[10px] tracking-widest font-bold">Cosmetice & Parfumuri</p>
+                        <p class="text-zinc-400 leading-relaxed">Branding editorial de înaltă clasă și arhitectură de ambalaj care captează atenția într-un peisaj de retail aglomerat.</p>
                     </div>
                 </div>
             </div>
@@ -139,48 +146,27 @@
 
         <section id="about" class="py-40 px-10">
             <div class="max-w-5xl mx-auto text-center">
-                <span class="text-indigo-400 text-xs font-bold tracking-[0.5em] block mb-10">THE BRAIN TRUST</span>
+                <span class="text-indigo-400 text-xs font-bold tracking-[0.5em] block mb-10">NUCLEUL CREATIV</span>
                 <h2 class="text-5xl md:text-7xl font-medium tracking-tighter mb-16">
-                    Ten humans. <br> <span class="font-chic italic">Unlimited perspectives.</span>
+                    Perspective <br> <span class="font-chic italic">fără limite.</span>
                 </h2>
-                <div class="grid grid-cols-2 md:grid-cols-5 gap-8">
-                    <div class="text-left py-6 border-t border-white/5">
-                        <span class="block text-zinc-600 text-[10px] font-bold">01</span>
-                        <span class="block text-white font-medium">Creative Dir.</span>
-                    </div>
-                    <div class="text-left py-6 border-t border-white/5">
-                        <span class="block text-zinc-600 text-[10px] font-bold">02</span>
-                        <span class="block text-white font-medium">Lead Designer</span>
-                    </div>
-                    <div class="text-left py-6 border-t border-white/5">
-                        <span class="block text-zinc-600 text-[10px] font-bold">03</span>
-                        <span class="block text-white font-medium">Strategist</span>
-                    </div>
-                    <div class="text-left py-6 border-t border-white/5">
-                        <span class="block text-zinc-600 text-[10px] font-bold">04</span>
-                        <span class="block text-white font-medium">Copywriter</span>
-                    </div>
-                    <div class="text-left py-6 border-t border-white/5">
-                        <span class="block text-zinc-600 text-[10px] font-bold">05</span>
-                        <span class="block text-white font-medium">Motion Artist</span>
-                    </div>
-                    </div>
-                <p class="mt-20 text-zinc-500 text-sm max-w-2xl mx-auto leading-relaxed italic">
-                    "We are small enough to care about the soul of your brand, but experienced enough to manage the complexity of global pharmaceutical packaging."
+                
+                <p class="mt-20 text-zinc-400 text-xl max-w-2xl mx-auto leading-relaxed italic">
+                    "Suntem suficient de mici pentru a ne păsa de sufletul brandului tău, dar suficient de experimentați pentru a gestiona complexitatea ambalajelor farmaceutice globale."
                 </p>
             </div>
         </section>
 
-        <section class="py-20 px-10">
+        <section id="proiecte" class="py-20 px-10">
             <div class="max-w-[1600px] mx-auto">
                 <div class="relative w-full aspect-video bg-zinc-900 rounded-[3rem] overflow-hidden border border-white/5 group shadow-2xl">
                     <div class="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-all duration-700 flex flex-col items-center justify-center">
                         <div class="w-24 h-24 border border-white/20 rounded-full flex items-center justify-center group-hover:scale-110 transition duration-500">
                              <i class="fa-solid fa-play text-white text-2xl"></i>
                         </div>
-                        <p class="mt-8 text-[10px] tracking-[0.4em] uppercase font-bold text-white opacity-50 group-hover:opacity-100 transition">Enter the Showcase</p>
+                        <p class="mt-8 text-[10px] tracking-[0.4em] uppercase font-bold text-white opacity-50 group-hover:opacity-100 transition">Vezi Portofoliul</p>
                     </div>
-                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -188,7 +174,7 @@
     <footer id="contact" class="py-40 px-10 border-t border-white/5 bg-[#0a0a0a]">
         <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20">
             <div>
-                <h2 class="text-6xl font-medium tracking-tighter mb-10">Ready to <br>go <span class="font-chic italic">fresh?</span></h2>
+                <h2 class="text-6xl font-medium tracking-tighter mb-10">Ești gata pentru <br>ceva <span class="font-chic italic">fresh?</span></h2>
                 <a href="mailto:office@freshideas.design" class="text-3xl font-light text-zinc-500 hover:text-indigo-400 transition">office@freshideas.design</a>
             </div>
             <div class="flex flex-col justify-between">
@@ -198,32 +184,42 @@
                     <a href="#" class="hover:text-white transition">Dribbble</a>
                 </div>
                 <div class="mt-20">
-                    <p class="text-zinc-600 text-xs">FRESH IDEAS — THE BOUTIQUE STUDIO</p>
-                    <p class="text-zinc-800 text-xs mt-2 uppercase font-bold">Small Team. High Impact. Bucharest & Beyond.</p>
+                    <p class="text-zinc-600 text-xs">FRESH IDEAS — STUDIO BOUTIQUE</p>
+                    <p class="text-zinc-800 text-xs mt-2 uppercase font-bold">Echipă Mică. Impact Mare. București & Worldwide.</p>
                 </div>
             </div>
         </div>
     </footer>
 
     <script>
-        // Custom Cursor Logic
         const cursor = document.getElementById('cursor');
         const glow = document.getElementById('cursor-glow');
         
         document.addEventListener('mousemove', e => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-            glow.style.left = e.clientX + 'px';
-            glow.style.top = e.clientY + 'px';
+            // Folosim requestAnimationFrame pentru performanță
+            window.requestAnimationFrame(() => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+                glow.style.left = e.clientX + 'px';
+                glow.style.top = e.clientY + 'px';
+            });
         });
 
-        // Hover effect for links
-        document.querySelectorAll('a, button').forEach(el => {
-            el.addEventListener('mouseenter', () => cursor.style.transform = 'scale(4)');
-            el.addEventListener('mouseleave', () => cursor.style.transform = 'scale(1)');
+        // Efect de hover pentru elemente interactive
+        document.querySelectorAll('a, button, .group').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                cursor.style.background = 'rgba(255, 255, 255, 0.4)';
+                glow.style.width = '500px';
+                glow.style.height = '500px';
+            });
+            el.addEventListener('mouseleave', () => {
+                cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+                cursor.style.background = 'rgba(255, 255, 255, 0.2)';
+                glow.style.width = '350px';
+                glow.style.height = '350px';
+            });
         });
     </script>
 </body>
-
 </html>
-
