@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fresh Ideas | Design Architects</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Playfair+Display:ital,wght@0,700;1,500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root { 
+            --bg: #0c0c0c; 
+            --accent: #d4d4d8; 
+            --highlight: #818cf8; /* Soft Indigo for a medical/beauty bridge */
+        }
+        body { 
+            font-family: 'Space Grotesk', sans-serif; 
+            background-color: var(--bg); 
+            color: #f4f4f5;
+            cursor: none; /* Custom cursor for that chic studio feel */
+        }
+        .font-chic { font-family: 'Playfair Display', serif; }
+
+        /* Custom Cursor Spotlight */
+        #cursor {
+            width: 20px; height: 20px;
+            background: #fff;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            transition: transform 0.2s ease;
+        }
+        #cursor-glow {
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(129, 140, 248, 0.08) 0%, transparent 70%);
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Editorial Image Hover */
+        .reveal-img {
+            overflow: hidden;
+            position: relative;
+            clip-path: inset(0 0 0 0);
+            transition: clip-path 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+        .reveal-img:hover {
+            clip-path: inset(5% 5% 5% 5%);
+        }
+
+        /* Glass Sidebar Navigation */
+        .side-nav {
+            border-right: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* Subtle Noise Overlay for Texture */
+        .grain {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://grainy-gradients.vercel.app/noise.svg');
+            opacity: 0.03; pointer-events: none; z-index: 100;
+        }
+
+        .text-outline {
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(255,255,255,0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="cursor"></div>
+    <div id="cursor-glow"></div>
+    <div class="grain"></div>
+
+    <nav class="fixed top-0 left-0 w-full z-50 px-10 py-8 flex justify-between items-center bg-transparent">
+        <a href="#" class="text-xl font-bold tracking-[0.2em] flex items-center gap-4">
+            <span class="w-2 h-2 bg-indigo-500 rounded-full animate-pulse"></span>
+            FRESH IDEAS<span class="font-chic italic text-zinc-500 font-light lowercase">.studio</span>
+        </a>
+        <div class="hidden md:flex gap-12 text-[10px] uppercase tracking-[0.3em] font-medium text-zinc-400">
+            <a href="#work" class="hover:text-white transition">Projects</a>
+            <a href="#sectors" class="hover:text-white transition">Expertise</a>
+            <a href="#about" class="hover:text-white transition">The 10</a>
+            <a href="#contact" class="text-indigo-400">Collaborate</a>
+        </div>
+    </nav>
+
+    <main>
+        <section class="min-h-screen flex items-center px-10 pt-20">
+            <div class="max-w-7xl mx-auto w-full grid lg:grid-cols-12 gap-10">
+                <div class="lg:col-span-8">
+                    <h1 class="text-[clamp(3.5rem,8vw,9rem)] leading-[0.9] font-medium tracking-tighter">
+                        CHIC <br> <span class="font-chic italic text-indigo-400">Aesthetics</span> <br> 
+                        <span class="text-outline">CLINICAL</span> <br> SOUL.
+                    </h1>
+                </div>
+                <div class="lg:col-span-4 flex flex-col justify-end pb-10">
+                    <p class="text-lg text-zinc-400 leading-relaxed font-light mb-8">
+                        Fresh Ideas is a boutique design collective of 10. We specialize in the high-stakes intersection of <span class="text-white">Medical innovation</span> and <span class="text-white">Luxury beauty</span>.
+                    </p>
+                    <div class="flex gap-4">
+                        <div class="w-12 h-px bg-zinc-700 mt-3"></div>
+                        <span class="text-[10px] uppercase tracking-widest text-zinc-500">Thinking Outside the Box <br>Since 2016</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sectors" class="py-40 bg-zinc-950 border-y border-white/5">
+            <div class="max-w-7xl mx-auto px-10">
+                <div class="grid md:grid-cols-2 gap-20">
+                    <div class="group">
+                        <div class="reveal-img aspect-[4/5] bg-zinc-900 mb-10">
+                            <img src="https://images.unsplash.com/photo-1587854692152-cbe660dbbb88?q=80&w=1200" class="w-full h-full object-cover grayscale opacity-50 group-hover:opacity-100 group-hover:grayscale-0 transition duration-1000" alt="Pharma Design">
+                        </div>
+                        <h3 class="text-3xl font-chic italic mb-4">Precision Science</h3>
+                        <p class="text-zinc-500 max-w-sm mb-6 uppercase text-[10px] tracking-widest font-bold">Medical & Pharmaceutical</p>
+                        <p class="text-zinc-400 leading-relaxed">Regulatory-compliant packaging, visual data simplification, and clinical trust-building for indie pharma labs.</p>
+                    </div>
+
+                    <div class="group md:mt-40">
+                        <div class="reveal-img aspect-[4/5] bg-zinc-900 mb-10">
+                            <img src="https://images.unsplash.com/photo-1596462502278-27bfdc4033c8?q=80&w=1200" class="w-full h-full object-cover grayscale opacity-50 group-hover:opacity-100 group-hover:grayscale-0 transition duration-1000" alt="Makeup Design">
+                        </div>
+                        <h3 class="text-3xl font-chic italic mb-4">Visual Allure</h3>
+                        <p class="text-zinc-500 max-w-sm mb-6 uppercase text-[10px] tracking-widest font-bold">Cosmetics & Fragrance</p>
+                        <p class="text-zinc-400 leading-relaxed">High-editorial branding and packaging architecture that captures attention in a crowded retail landscape.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="py-40 px-10">
+            <div class="max-w-5xl mx-auto text-center">
+                <span class="text-indigo-400 text-xs font-bold tracking-[0.5em] block mb-10">THE BRAIN TRUST</span>
+                <h2 class="text-5xl md:text-7xl font-medium tracking-tighter mb-16">
+                    Ten humans. <br> <span class="font-chic italic">Unlimited perspectives.</span>
+                </h2>
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-8">
+                    <div class="text-left py-6 border-t border-white/5">
+                        <span class="block text-zinc-600 text-[10px] font-bold">01</span>
+                        <span class="block text-white font-medium">Creative Dir.</span>
+                    </div>
+                    <div class="text-left py-6 border-t border-white/5">
+                        <span class="block text-zinc-600 text-[10px] font-bold">02</span>
+                        <span class="block text-white font-medium">Lead Designer</span>
+                    </div>
+                    <div class="text-left py-6 border-t border-white/5">
+                        <span class="block text-zinc-600 text-[10px] font-bold">03</span>
+                        <span class="block text-white font-medium">Strategist</span>
+                    </div>
+                    <div class="text-left py-6 border-t border-white/5">
+                        <span class="block text-zinc-600 text-[10px] font-bold">04</span>
+                        <span class="block text-white font-medium">Copywriter</span>
+                    </div>
+                    <div class="text-left py-6 border-t border-white/5">
+                        <span class="block text-zinc-600 text-[10px] font-bold">05</span>
+                        <span class="block text-white font-medium">Motion Artist</span>
+                    </div>
+                    </div>
+                <p class="mt-20 text-zinc-500 text-sm max-w-2xl mx-auto leading-relaxed italic">
+                    "We are small enough to care about the soul of your brand, but experienced enough to manage the complexity of global pharmaceutical packaging."
+                </p>
+            </div>
+        </section>
+
+        <section class="py-20 px-10">
+            <div class="max-w-[1600px] mx-auto">
+                <div class="relative w-full aspect-video bg-zinc-900 rounded-[3rem] overflow-hidden border border-white/5 group shadow-2xl">
+                    <div class="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-all duration-700 flex flex-col items-center justify-center">
+                        <div class="w-24 h-24 border border-white/20 rounded-full flex items-center justify-center group-hover:scale-110 transition duration-500">
+                             <i class="fa-solid fa-play text-white text-2xl"></i>
+                        </div>
+                        <p class="mt-8 text-[10px] tracking-[0.4em] uppercase font-bold text-white opacity-50 group-hover:opacity-100 transition">Enter the Showcase</p>
+                    </div>
+                    </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact" class="py-40 px-10 border-t border-white/5 bg-[#0a0a0a]">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20">
+            <div>
+                <h2 class="text-6xl font-medium tracking-tighter mb-10">Ready to <br>go <span class="font-chic italic">fresh?</span></h2>
+                <a href="mailto:office@freshideas.design" class="text-3xl font-light text-zinc-500 hover:text-indigo-400 transition">office@freshideas.design</a>
+            </div>
+            <div class="flex flex-col justify-between">
+                <div class="flex gap-12 text-[10px] font-bold uppercase tracking-widest text-zinc-600">
+                    <a href="#" class="hover:text-white transition">Instagram</a>
+                    <a href="#" class="hover:text-white transition">Behance</a>
+                    <a href="#" class="hover:text-white transition">Dribbble</a>
+                </div>
+                <div class="mt-20">
+                    <p class="text-zinc-600 text-xs">FRESH IDEAS — THE BOUTIQUE STUDIO</p>
+                    <p class="text-zinc-800 text-xs mt-2 uppercase font-bold">Small Team. High Impact. Bucharest & Beyond.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Custom Cursor Logic
+        const cursor = document.getElementById('cursor');
+        const glow = document.getElementById('cursor-glow');
+        
+        document.addEventListener('mousemove', e => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            glow.style.left = e.clientX + 'px';
+            glow.style.top = e.clientY + 'px';
+        });
+
+        // Hover effect for links
+        document.querySelectorAll('a, button').forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.style.transform = 'scale(4)');
+            el.addEventListener('mouseleave', () => cursor.style.transform = 'scale(1)');
+        });
+    </script>
+</body>
+</html>
