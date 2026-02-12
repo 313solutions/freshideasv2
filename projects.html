@@ -46,6 +46,14 @@
         .bg-vignette {
             background: radial-gradient(circle at 50% 50%, #0a0a0a 0%, #050505 100%);
         }
+
+        /* Proiecte Grid Fix */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            padding-bottom: 5rem;
+        }
     </style>
 </head>
 <body class="bg-vignette">
@@ -65,67 +73,61 @@
         </div>
     </nav>
 
-    <main class="w-full">
-        <section class="py-10 bg-[#0a0a0a]">
-            <div class="max-w-7xl mx-auto px-10">
+    <main class="w-full px-10">
+        <section class="py-10">
+            <div class="max-w-7xl mx-auto">
                 <div class="flex justify-between items-end mb-16">
-                    <h2 class="text-5xl font-chic italic">Proiecte Recente</h2>
-                    <p class="text-zinc-500 text-[10px] uppercase tracking-[0.3em]">Portofoliu Selectiv</p>
+                    <h2 class="text-5xl font-chic italic">Portofoliu</h2>
+                    <p class="text-zinc-500 text-[10px] uppercase tracking-[0.3em]">Fresh Ideas Selects</p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="project-grid">
                     
                     <div class="group relative aspect-square overflow-hidden rounded-xl bg-zinc-900 border border-white/5">
-                        <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?q=80&w=1000" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700">
-                        <div class="absolute inset-0 bg-black/70 flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                            <p class="text-indigo-400 text-[10px] font-bold tracking-widest uppercase mb-2">Artă Cosmetică</p>
-                            <h3 class="text-2xl font-bold">AVON Beauty</h3>
-                            <p class="text-sm text-zinc-400 mt-2">Design de ambalaj editorial pentru noua gamă.</p>
+                        <img src="https://images.unsplash.com/photo-1631730359585-38a4935ccbb2?q=80&w=1000" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700" alt="AVON Product Design">
+                        <div class="absolute inset-0 bg-black/80 flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                            <h3 class="text-2xl font-bold">AVON Cosmetics</h3>
+                            <p class="text-sm text-zinc-400 mt-2">Design vizual pentru campaniile de catalog.</p>
                         </div>
                     </div>
 
                     <div class="group relative aspect-square overflow-hidden rounded-xl bg-zinc-900 border border-white/5">
-                        <img src="https://images.unsplash.com/photo-1579152276502-542302452093?q=80&w=1000" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700">
-                        <div class="absolute inset-0 bg-black/70 flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                            <p class="text-indigo-400 text-[10px] font-bold tracking-widest uppercase mb-2">Medical</p>
-                            <h3 class="text-2xl font-bold">BioTech Identity</h3>
-                            <p class="text-sm text-zinc-400 mt-2">Identitate vizuală pentru laborator de cercetare.</p>
+                        <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=1000" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700" alt="Medical Science">
+                        <div class="absolute inset-0 bg-black/80 flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                            <h3 class="text-2xl font-bold">Medical Research</h3>
+                            <p class="text-sm text-zinc-400 mt-2">Identitate digitală pentru laboratoare clinice.</p>
                         </div>
                     </div>
 
                     <div class="group relative aspect-square overflow-hidden rounded-xl bg-zinc-900 border border-white/5">
-                        <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=1000" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700">
-                        <div class="absolute inset-0 bg-black/70 flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                            <p class="text-indigo-400 text-[10px] font-bold tracking-widest uppercase mb-2">AVON Partener</p>
-                            <h3 class="text-2xl font-bold">Aura AVON</h3>
-                            <p class="text-sm text-zinc-400 mt-2">Arhitectură de brand pentru campanii sezoniere.</p>
+                        <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=1000" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700" alt="AVON Skincare">
+                        <div class="absolute inset-0 bg-black/80 flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                            <h3 class="text-2xl font-bold">AVON Anew</h3>
+                            <p class="text-sm text-zinc-400 mt-2">Concept vizual gamă anti-aging.</p>
                         </div>
                     </div>
 
                     <div class="group relative aspect-square overflow-hidden rounded-xl bg-zinc-900 border border-white/5">
-                        <img src="https://images.unsplash.com/photo-1587854692152-cbe660dbbb88?q=80&w=1000" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700">
-                        <div class="absolute inset-0 bg-black/70 flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                            <p class="text-indigo-400 text-[10px] font-bold tracking-widest uppercase mb-2">Farmaceutic</p>
-                            <h3 class="text-2xl font-bold">Pharma Pack</h3>
-                            <p class="text-sm text-zinc-400 mt-2">Sisteme de ambalaj inteligente și sustenabile.</p>
+                        <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?q=80&w=1000" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700" alt="Medical Tech">
+                        <div class="absolute inset-0 bg-black/80 flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                            <h3 class="text-2xl font-bold">Pharma Solutions</h3>
+                            <p class="text-sm text-zinc-400 mt-2">Interfețe și design pentru sisteme medicale.</p>
                         </div>
                     </div>
 
                     <div class="group relative aspect-square overflow-hidden rounded-xl bg-zinc-900 border border-white/5">
-                        <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?q=80&w=1000" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700">
-                        <div class="absolute inset-0 bg-black/70 flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                            <p class="text-indigo-400 text-[10px] font-bold tracking-widest uppercase mb-2">Cosmetice</p>
-                            <h3 class="text-2xl font-bold">AVON Care Plus</h3>
-                            <p class="text-sm text-zinc-400 mt-2">Redesign vizual pentru gama de îngrijire.</p>
+                        <img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?q=80&w=1000" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700" alt="AVON Fragrance">
+                        <div class="absolute inset-0 bg-black/80 flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                            <h3 class="text-2xl font-bold">AVON Perfumes</h3>
+                            <p class="text-sm text-zinc-400 mt-2">Direcție creativă parfumuri damă.</p>
                         </div>
                     </div>
 
                     <div class="group relative aspect-square overflow-hidden rounded-xl bg-zinc-900 border border-white/5">
-                        <img src="https://images.unsplash.com/photo-1532187875605-2fe3587b1598?q=80&w=1000" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700">
-                        <div class="absolute inset-0 bg-black/70 flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                            <p class="text-indigo-400 text-[10px] font-bold tracking-widest uppercase mb-2">Analiză</p>
-                            <h3 class="text-2xl font-bold">Neuro Data</h3>
-                            <p class="text-sm text-zinc-400 mt-2">Visual data visualization pentru clinici private.</p>
+                        <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=1000" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700" alt="Clinic Design">
+                        <div class="absolute inset-0 bg-black/80 flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                            <h3 class="text-2xl font-bold">Health Care</h3>
+                            <p class="text-sm text-zinc-400 mt-2">Branding pentru clinici de estetică medicală.</p>
                         </div>
                     </div>
 
@@ -136,13 +138,11 @@
 
     <footer id="contact" class="py-20 px-10 border-t border-white/5 bg-[#050505]">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
-            <div>
-                <h2 class="text-3xl font-medium tracking-tighter">Ready to start?</h2>
-                <a href="mailto:office@freshideas.design" class="text-zinc-500 hover:text-white transition-all">office@freshideas.design</a>
+            <div class="text-left">
+                <h2 class="text-3xl font-medium tracking-tighter">Fresh Ideas</h2>
+                <a href="mailto:office@freshideas.design" class="text-zinc-500 hover:text-white transition-all text-sm">office@freshideas.design</a>
             </div>
-            <div class="text-right">
-                <p class="text-zinc-700 text-[10px] tracking-widest uppercase">Fresh Ideas © 2026</p>
-            </div>
+            <p class="text-zinc-700 text-[10px] tracking-widest uppercase">© 2026 Toate drepturile rezervate</p>
         </div>
     </footer>
 
@@ -156,6 +156,15 @@
                 cursor.style.top = e.clientY + 'px';
                 glow.style.left = e.clientX + 'px';
                 glow.style.top = e.clientY + 'px';
+            });
+        });
+
+        document.querySelectorAll('a, .group').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.style.transform = 'translate(-50%, -50%) scale(1.3)';
+            });
+            el.addEventListener('mouseleave', () => {
+                cursor.style.transform = 'translate(-50%, -50%) scale(1)';
             });
         });
     </script>
