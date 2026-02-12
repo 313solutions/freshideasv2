@@ -24,7 +24,7 @@
         }
         .font-chic { font-family: 'Playfair Display', serif; }
 
-        /* Cursor Rafinat - Doar becul și lumina */
+        /* Cursor Bec - Fără contur */
         #cursor {
             position: fixed;
             pointer-events: none;
@@ -35,45 +35,41 @@
         }
         
         #cursor i {
-            font-size: 20px;
+            font-size: 18px;
             color: rgba(255, 255, 255, 0.9);
-            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
         }
 
-        /* Lumina de sub cursor - Mai difuză și elegantă */
+        /* Lumina de sub cursor - Mai mică și Dimmed */
         #cursor-glow {
-            width: 450px; 
-            height: 450px;
-            background: radial-gradient(circle, rgba(165, 180, 252, 0.12) 0%, transparent 75%);
+            width: 180px; 
+            height: 180px;
+            background: radial-gradient(circle, rgba(165, 180, 252, 0.08) 0%, transparent 60%);
             position: fixed;
             pointer-events: none;
             z-index: 9998;
             transform: translate(-50%, -50%);
+            transition: opacity 0.3s ease;
         }
 
-        /* Reveal Image cu Overlay Elegant */
+        /* Navigație curată - Eliminat Blur-ul care strica scroll-ul */
+        nav {
+            background: transparent;
+        }
+
         .reveal-img {
             overflow: hidden;
             position: relative;
             transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
         }
-        .reveal-img::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.5));
-            opacity: 0.6;
-        }
 
-        /* Text Outline subtil */
         .text-outline {
             color: transparent;
-            -webkit-text-stroke: 1px rgba(255,255,255,0.15);
+            -webkit-text-stroke: 1px rgba(255,255,255,0.1);
         }
 
-        /* Gradient subtil pe fundal pentru a nu fi doar negru plat */
         .bg-vignette {
-            background: radial-gradient(circle at 50% 50%, #0c0c0c 0%, #050505 100%);
+            background: radial-gradient(circle at 50% 50%, #0a0a0a 0%, #050505 100%);
         }
     </style>
 </head>
@@ -82,15 +78,15 @@
     <div id="cursor"><i class="fa-solid fa-lightbulb"></i></div>
     <div id="cursor-glow"></div>
 
-    <nav class="fixed top-0 left-0 w-full z-50 px-10 py-10 flex justify-between items-center bg-transparent backdrop-blur-sm">
+    <nav class="absolute top-0 left-0 w-full z-50 px-10 py-10 flex justify-between items-center">
         <a href="index.html" class="text-xl font-bold tracking-[0.3em] flex items-center gap-4">
-            <span class="w-1.5 h-1.5 bg-indigo-400 rounded-full shadow-[0_0_10px_#818cf8]"></span>
+            <span class="w-1.5 h-1.5 bg-indigo-400 rounded-full"></span>
             FRESH IDEAS<span class="font-chic italic text-zinc-500 font-light lowercase">.studio</span>
         </a>
         <div class="hidden md:flex gap-16 text-[11px] uppercase tracking-[0.4em] font-semibold text-zinc-400">
             <a href="projects.html" class="hover:text-indigo-300 transition-colors">Proiecte</a>
             <a href="#expertiza" class="hover:text-white transition-colors">Expertiză</a>
-            <a href="#contact" class="text-indigo-400 border-b border-indigo-400/30 pb-1">Colaborare</a>
+            <a href="#contact" class="text-indigo-400">Colaborare</a>
         </div>
     </nav>
 
@@ -106,7 +102,7 @@
                 <div class="lg:col-span-4 flex flex-col justify-end pb-12">
                     <div class="space-y-8">
                         <p class="text-xl text-zinc-400 leading-relaxed font-light">
-                            Un studio de creație boutique, definind standardele vizuale la granița dintre <span class="text-white font-medium border-b border-zinc-700">rigoarea medicală</span> și <span class="text-white font-medium border-b border-zinc-700">eleganța luxury</span>.
+                            Definim standardele vizuale la granița dintre <span class="text-white font-medium">rigoarea medicală</span> și <span class="text-white font-medium">eleganța estetică</span>.
                         </p>
                         <div class="flex items-center gap-6">
                             <span class="text-[10px] uppercase tracking-[0.5em] text-zinc-600 font-bold">Est. 2016</span>
@@ -121,13 +117,13 @@
             <div class="max-w-7xl mx-auto px-10">
                 <div class="flex justify-between items-end mb-24">
                     <h2 class="text-4xl font-chic italic">Sectoare de Focus</h2>
-                    <p class="text-zinc-500 text-[10px] uppercase tracking-[0.3em]">Expertiza noastră de nișă</p>
+                    <p class="text-zinc-500 text-[10px] uppercase tracking-[0.3em]">Expertiza noastră</p>
                 </div>
                 
                 <div class="grid md:grid-cols-2 gap-32">
                     <div class="group relative">
-                        <div class="reveal-img aspect-[3/4] rounded-2xl mb-12 shadow-2xl overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1585435557343-3b092031a831?q=80&w=1200" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-[2s] ease-out" alt="Medical Design">
+                        <div class="reveal-img aspect-[3/4] rounded-2xl mb-12 shadow-2xl overflow-hidden bg-zinc-900">
+                            <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?q=80&w=1200" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition duration-[1.5s] ease-out" alt="Medical & Farmaceutic">
                         </div>
                         <div class="space-y-4">
                             <h3 class="text-4xl font-light tracking-tight">Știință de Precizie</h3>
@@ -137,26 +133,23 @@
                     </div>
 
                     <div class="group relative md:mt-48">
-                        <div class="reveal-img aspect-[3/4] rounded-2xl mb-12 shadow-2xl overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1200" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-[2s] ease-out" alt="Luxury Beauty">
+                        <div class="reveal-img aspect-[3/4] rounded-2xl mb-12 shadow-2xl overflow-hidden bg-zinc-900">
+                            <img src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?q=80&w=1200" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition duration-[1.5s] ease-out" alt="Cosmetics Design">
                         </div>
                         <div class="space-y-4">
                             <h3 class="text-4xl font-light tracking-tight">Alură Vizuală</h3>
                             <p class="text-zinc-500 text-xs uppercase tracking-widest">Cosmetice & Parfumuri</p>
-                            <p class="text-zinc-400 leading-relaxed max-w-sm">Arhitectură de brand premium unde estetica devine principalul motor de dorință în segmentul luxury.</p>
+                            <p class="text-zinc-400 leading-relaxed max-w-sm">Arhitectură de brand premium unde estetica devine principalul motor de dorință în segmentul beauty.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="py-60 px-10 relative overflow-hidden">
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center opacity-[0.02] select-none pointer-events-none">
-                <span class="text-[20rem] font-bold tracking-tighter">FRESH</span>
-            </div>
+        <section class="py-60 px-10 relative">
             <div class="max-w-4xl mx-auto text-center relative z-10">
                 <p class="text-3xl md:text-5xl font-light leading-snug text-zinc-300">
-                    "Suntem suficient de mici pentru a ne păsa de <span class="font-chic italic text-white">sufletul</span> brandului tău, dar suficient de experimentați pentru a gestiona complexitatea globală."
+                    "Suntem suficient de mici pentru a ne păsa de <span class="font-chic italic text-white">sufletul</span> brandului tău, dar suficient de experimentați pentru a gestiona <span class="text-white">viziuni ambițioase</span>."
                 </p>
                 <div class="mt-16 inline-block w-12 h-px bg-indigo-400"></div>
             </div>
@@ -166,13 +159,13 @@
             <div class="max-w-7xl mx-auto">
                 <a href="projects.html" class="block group relative w-full aspect-[21/9] rounded-[2rem] overflow-hidden">
                     <div class="absolute inset-0 bg-zinc-900">
-                         <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1600" class="w-full h-full object-cover opacity-30 group-hover:opacity-50 group-hover:scale-105 transition duration-[3s]" alt="Showcase">
+                         <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=1600" class="w-full h-full object-cover opacity-20 group-hover:opacity-40 transition duration-[2s]" alt="Proiecte">
                     </div>
                     <div class="absolute inset-0 flex flex-col items-center justify-center space-y-6">
-                        <div class="w-20 h-20 border border-white/10 rounded-full flex items-center justify-center backdrop-blur-md group-hover:border-indigo-400/50 group-hover:scale-110 transition-all duration-500">
+                        <div class="w-20 h-20 border border-white/10 rounded-full flex items-center justify-center backdrop-blur-sm group-hover:border-indigo-400/50 group-hover:scale-110 transition-all duration-500">
                              <i class="fa-solid fa-arrow-right -rotate-45 text-white text-xl group-hover:rotate-0 transition-transform duration-500"></i>
                         </div>
-                        <span class="text-xs uppercase tracking-[0.6em] text-white/60 group-hover:text-white transition-colors">Explorează Proiectele</span>
+                        <span class="text-xs uppercase tracking-[0.6em] text-white/60 group-hover:text-white transition-colors">Portofoliu Proiecte</span>
                     </div>
                 </a>
             </div>
@@ -212,15 +205,14 @@
             });
         });
 
-        // Hover animat pentru elementele interactive
         document.querySelectorAll('a, button, .group').forEach(el => {
             el.addEventListener('mouseenter', () => {
-                cursor.style.transform = 'translate(-50%, -50%) scale(1.4)';
-                glow.style.background = 'radial-gradient(circle, rgba(165, 180, 252, 0.2) 0%, transparent 75%)';
+                cursor.style.transform = 'translate(-50%, -50%) scale(1.3)';
+                glow.style.background = 'radial-gradient(circle, rgba(165, 180, 252, 0.12) 0%, transparent 60%)';
             });
             el.addEventListener('mouseleave', () => {
                 cursor.style.transform = 'translate(-50%, -50%) scale(1)';
-                glow.style.background = 'radial-gradient(circle, rgba(165, 180, 252, 0.12) 0%, transparent 75%)';
+                glow.style.background = 'radial-gradient(circle, rgba(165, 180, 252, 0.08) 0%, transparent 60%)';
             });
         });
     </script>
