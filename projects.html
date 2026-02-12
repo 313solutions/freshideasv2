@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fresh Ideas | Portofoliu</title>
+    <title>Portofoliu | Fresh Ideas</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -21,13 +21,14 @@
         }
         .font-chic { font-family: 'Playfair Display', serif; }
 
+        /* Cursor Bec */
         #cursor {
             position: fixed;
             pointer-events: none;
             z-index: 9999;
             transform: translate(-50%, -50%);
             mix-blend-mode: screen;
-            transition: transform 0.15s ease-out;
+            transition: transform 0.15s ease-out, opacity 0.2s ease;
         }
         #cursor i {
             font-size: 18px;
@@ -41,18 +42,21 @@
             pointer-events: none;
             z-index: 9998;
             transform: translate(-50%, -50%);
+            transition: opacity 0.2s ease;
+        }
+
+        /* Ascundere bec pe elemente clickabile */
+        .hide-cursor #cursor, 
+        .hide-cursor #cursor-glow { 
+            opacity: 0; 
         }
 
         .bg-vignette {
             background: radial-gradient(circle at 50% 50%, #0a0a0a 0%, #050505 100%);
         }
 
-        /* Proiecte Grid Fix */
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            padding-bottom: 5rem;
+        .project-card img {
+            transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
         }
     </style>
 </head>
@@ -62,72 +66,72 @@
     <div id="cursor-glow"></div>
 
     <nav class="w-full px-10 py-10 flex justify-between items-center">
-        <a href="index.html" class="text-xl font-bold tracking-[0.3em] flex items-center gap-4">
+        <a href="index.html" class="text-xl font-bold tracking-[0.3em] flex items-center gap-4 cursor-pointer">
             <span class="w-1.5 h-1.5 bg-indigo-400 rounded-full"></span>
-            FRESH IDEAS<span class="font-chic italic text-zinc-500 font-light lowercase">.fresh</span>
+            FRESH IDEAS
         </a>
         <div class="hidden md:flex gap-12 text-[11px] uppercase tracking-[0.4em] font-semibold text-zinc-400">
-            <a href="projects.html" class="text-white border-b border-white/20 pb-1">Proiecte</a>
-            <a href="team.html" class="hover:text-indigo-300 transition-colors">Echipa</a>
-            <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+            <a href="index.html" class="hover:text-white transition-colors cursor-pointer">Acasa</a>
+            <a href="team.html" class="hover:text-indigo-300 transition-colors cursor-pointer">Echipa</a>
+            <a href="#contact" class="hover:text-white transition-colors cursor-pointer">Contact</a>
         </div>
     </nav>
 
     <main class="w-full px-10">
         <section class="py-10">
             <div class="max-w-7xl mx-auto">
-                <div class="flex justify-between items-end mb-16">
+                <div class="flex justify-between items-end mb-16 border-b border-white/5 pb-8">
                     <h2 class="text-5xl font-chic italic">Portofoliu</h2>
-                    <p class="text-zinc-500 text-[10px] uppercase tracking-[0.3em]">Fresh Ideas Selects</p>
+                    <p class="text-zinc-500 text-[10px] uppercase tracking-[0.3em]">Lucrări Selectate</p>
                 </div>
 
-                <div class="project-grid">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     
-                    <div class="group relative aspect-square overflow-hidden rounded-xl bg-zinc-900 border border-white/5">
-                        <img src="https://images.unsplash.com/photo-1631730359585-38a4935ccbb2?q=80&w=1000" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700" alt="AVON Product Design">
+                    <div class="project-card group relative aspect-square overflow-hidden rounded-xl bg-zinc-900 border border-white/5">
+                        <img src="https://ichef.bbci.co.uk/news/1536/cpsprodpb/6F46/production/_107068482_avon2.png.webp" class="w-full h-full object-cover grayscale group-hover:grayscale-0" alt="AVON Product">
                         <div class="absolute inset-0 bg-black/80 flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                            <h3 class="text-2xl font-bold">AVON Cosmetics</h3>
-                            <p class="text-sm text-zinc-400 mt-2">Design vizual pentru campaniile de catalog.</p>
+                            <h3 class="text-2xl font-bold">AVON Global</h3>
+                            <p class="text-sm text-zinc-400 mt-2">Design vizual campanie brand.</p>
                         </div>
                     </div>
 
-                    <div class="group relative aspect-square overflow-hidden rounded-xl bg-zinc-900 border border-white/5">
-                        <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=1000" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700" alt="Medical Science">
+                    <div class="project-card group relative aspect-square overflow-hidden rounded-xl bg-zinc-900 border border-white/5">
+                        <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?q=80&w=1000" class="w-full h-full object-cover grayscale group-hover:grayscale-0" alt="Medical Tech">
                         <div class="absolute inset-0 bg-black/80 flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                            <h3 class="text-2xl font-bold">Medical Research</h3>
-                            <p class="text-sm text-zinc-400 mt-2">Identitate digitală pentru laboratoare clinice.</p>
+                            <h3 class="text-2xl font-bold">Health Systems</h3>
+                            <p class="text-sm text-zinc-400 mt-2">Identitate digitală medicală.</p>
                         </div>
                     </div>
 
-                    <div class="group relative aspect-square overflow-hidden rounded-xl bg-zinc-900 border border-white/5">
-                        <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=1000" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700" alt="AVON Skincare">
+                    <div class="project-card group relative aspect-square overflow-hidden rounded-xl bg-zinc-900 border border-white/5">
+                        <img src="https://wwd.com/wp-content/uploads/2024/07/AVON-RENEW-Skin-Renewal-e1721767840427.jpg?w=1000" class="w-full h-full object-cover grayscale group-hover:grayscale-0" alt="AVON Renew">
                         <div class="absolute inset-0 bg-black/80 flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                            <h3 class="text-2xl font-bold">AVON Anew</h3>
-                            <p class="text-sm text-zinc-400 mt-2">Concept vizual gamă anti-aging.</p>
+                            <h3 class="text-2xl font-bold">AVON Renew</h3>
+                            <p class="text-sm text-zinc-400 mt-2">Concept vizual îngrijire avansată.</p>
                         </div>
                     </div>
 
-                    <div class="group relative aspect-square overflow-hidden rounded-xl bg-zinc-900 border border-white/5">
-                        <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?q=80&w=1000" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700" alt="Medical Tech">
+                    <div class="project-card group relative aspect-square overflow-hidden rounded-xl bg-zinc-900 border border-white/5">
+                        <img src="https://images.unsplash.com/photo-1532187875605-2fe3587b1598?q=80&w=1000" class="w-full h-full object-cover grayscale group-hover:grayscale-0" alt="Lab Research">
                         <div class="absolute inset-0 bg-black/80 flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                            <h3 class="text-2xl font-bold">Pharma Solutions</h3>
-                            <p class="text-sm text-zinc-400 mt-2">Interfețe și design pentru sisteme medicale.</p>
+                            <h3 class="text-2xl font-bold">Pharma Core</h3>
+                            <p class="text-sm text-zinc-400 mt-2">Design sisteme de laborator.</p>
                         </div>
                     </div>
 
-                    <div class="group relative aspect-square overflow-hidden rounded-xl bg-zinc-900 border border-white/5">
-                        <img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?q=80&w=1000" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700" alt="AVON Fragrance">
+                    <div class="project-card group relative aspect-square overflow-hidden rounded-xl bg-zinc-900 border border-white/5">
+                        <img src="https://www.avonworldwide.com/dam/jcr:0c7d6152-d045-44b3-b0f6-34e302e2020c/Purpose-GS-001-644227-GC-APR2524-RGB.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0" alt="AVON Purpose">
                         <div class="absolute inset-0 bg-black/80 flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                            <h3 class="text-2xl font-bold">AVON Perfumes</h3>
-                            <p class="text-sm text-zinc-400 mt-2">Direcție creativă parfumuri damă.</p>
+                            <h3 class="text-2xl font-bold">AVON Purpose</h3>
+                            <p class="text-sm text-zinc-400 mt-2">Arhitectură vizuală strategică.</p>
                         </div>
                     </div>
 
-                    <div class="group relative aspect-square overflow-hidden rounded-xl bg-zinc-900 border border-white/5">
-                        <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=1000" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700" alt="Clinic Design">
+                    <div class="project-card group relative aspect-square overflow-hidden rounded-xl bg-zinc-900 border border-white/5">
+                        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=1000" class="w-full h-full object-cover grayscale group-hover:grayscale-0" alt="Clinic Aesthetic">
                         <div class="absolute inset-0 bg-black/80 flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                            <h3 class="text-2xl font-bold">Health Care</h3>
-                            <p class="text-sm text-zinc-400 mt-2">Branding pentru clinici de estetică medicală.</p>
+                            <h3 class="text-2xl font-bold">Pure Clinic</h3>
+                            <p class="text-sm text-zinc-400 mt-2">Branding estetică medicală.</p>
                         </div>
                     </div>
 
@@ -139,16 +143,17 @@
     <footer id="contact" class="py-20 px-10 border-t border-white/5 bg-[#050505]">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
             <div class="text-left">
-                <h2 class="text-3xl font-medium tracking-tighter">Fresh Ideas</h2>
-                <a href="mailto:office@freshideas.design" class="text-zinc-500 hover:text-white transition-all text-sm">office@freshideas.design</a>
+                <h2 class="text-2xl font-bold tracking-tighter">Fresh Ideas</h2>
+                <a href="mailto:office@freshideas.design" class="text-zinc-500 hover:text-white transition-all text-sm cursor-pointer">office@freshideas.design</a>
             </div>
-            <p class="text-zinc-700 text-[10px] tracking-widest uppercase">© 2026 Toate drepturile rezervate</p>
+            <p class="text-zinc-700 text-[10px] tracking-widest uppercase">© 2026</p>
         </div>
     </footer>
 
     <script>
         const cursor = document.getElementById('cursor');
         const glow = document.getElementById('cursor-glow');
+        const body = document.body;
         
         document.addEventListener('mousemove', e => {
             window.requestAnimationFrame(() => {
@@ -159,12 +164,16 @@
             });
         });
 
-        document.querySelectorAll('a, .group').forEach(el => {
+        // Logica pentru schimbarea cursorului pe butoane
+        const interactables = document.querySelectorAll('a, button, .cursor-pointer');
+        interactables.forEach(el => {
             el.addEventListener('mouseenter', () => {
-                cursor.style.transform = 'translate(-50%, -50%) scale(1.3)';
+                body.classList.add('hide-cursor');
+                el.style.cursor = 'pointer'; // Arată mânuța nativă
             });
             el.addEventListener('mouseleave', () => {
-                cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+                body.classList.add('hide-cursor');
+                body.classList.remove('hide-cursor');
             });
         });
     </script>
