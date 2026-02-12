@@ -45,8 +45,11 @@
             transition: opacity 0.2s ease;
         }
 
+        /* Becul dispare la hover pe poze/link-uri */
         .hide-custom-cursor #cursor, 
-        .hide-custom-cursor #cursor-glow { opacity: 0; }
+        .hide-custom-cursor #cursor-glow { 
+            opacity: 0; 
+        }
 
         .bg-vignette {
             background: radial-gradient(circle at 50% 50%, #0a0a0a 0%, #050505 100%);
@@ -54,6 +57,9 @@
 
         /* Project Cards */
         .project-card { cursor: pointer; }
+        .project-card img {
+            transition: transform 0.8s ease;
+        }
         .project-card .overlay {
             background: rgba(0, 0, 0, 0);
             transition: background 0.3s ease;
@@ -66,11 +72,12 @@
             background: rgba(0, 0, 0, 0.05);
         }
 
-        /* TEXT NEGRU CU OUTLINE ALB - Fără fundal */
+        /* TEXT ALB CU OUTLINE NEGRU FIN (Fără Shadow/Background) */
         .project-card .info-content {
             opacity: 0;
             transform: translateY(10px);
             transition: all 0.4s ease;
+            pointer-events: none;
         }
         .project-card:hover .info-content {
             opacity: 1;
@@ -78,29 +85,20 @@
         }
 
         .project-card h3 {
-            color: #000000;
-            font-weight: 800; /* Extra bold */
+            color: #ffffff;
+            font-weight: 800;
             font-size: 1.75rem;
             margin-bottom: 0.5rem;
-            /* Tehnica Outline pentru contrast maxim pe orice fundal */
-            text-shadow: 
-                -1px -1px 0 #fff,  
-                 1px -1px 0 #fff,
-                -1px  1px 0 #fff,
-                 1px  1px 0 #fff,
-                 0px  2px 4px rgba(0,0,0,0.2);
+            /* Outline negru fin */
+            -webkit-text-stroke: 0.5px #000000;
         }
         .project-card p {
-            color: #000000;
+            color: #ffffff;
             font-weight: 600;
             font-size: 0.95rem;
             line-height: 1.4;
-            /* Outline mai fin pentru textul mic */
-            text-shadow: 
-                -0.5px -0.5px 0 #fff,  
-                 0.5px -0.5px 0 #fff,
-                -0.5px  0.5px 0 #fff,
-                 0.5px  0.5px 0 #fff;
+            /* Outline negru foarte fin */
+            -webkit-text-stroke: 0.3px #000000;
         }
     </style>
 </head>
@@ -186,7 +184,7 @@
                         <div class="overlay absolute inset-0">
                             <div class="info-content">
                                 <h3>Pure Clinic</h3>
-                                <p>Design branding clinică estetică.</p>
+                                <p>Design identitate și branding clinică estetică.</p>
                             </div>
                         </div>
                     </div>
@@ -220,6 +218,7 @@
             });
         });
 
+        // Logica cursorului: ascunde becul și arată mânuța nativă
         const hoverTargets = document.querySelectorAll('.hover-target');
         hoverTargets.forEach(el => {
             el.addEventListener('mouseenter', () => {
