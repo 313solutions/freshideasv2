@@ -60,37 +60,47 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
-            padding: 2rem;
+            padding: 2.5rem;
         }
         .project-card:hover .overlay {
-            background: rgba(0, 0, 0, 0.05); /* Shade discret 5% */
+            background: rgba(0, 0, 0, 0.05);
         }
 
-        /* CONTAINER TEXT - Placă albă pentru vizibilitate maximă */
-        .project-card .info-box {
-            background: rgba(255, 255, 255, 0.95); /* Fundal alb aproape opac */
-            padding: 1.5rem;
-            transform: translateY(20px);
+        /* TEXT NEGRU CU OUTLINE ALB - Fără fundal */
+        .project-card .info-content {
             opacity: 0;
+            transform: translateY(10px);
             transition: all 0.4s ease;
-            border-radius: 8px;
         }
-        .project-card:hover .info-box {
+        .project-card:hover .info-content {
             opacity: 1;
             transform: translateY(0);
         }
 
         .project-card h3 {
             color: #000000;
-            font-weight: 700;
-            font-size: 1.5rem;
+            font-weight: 800; /* Extra bold */
+            font-size: 1.75rem;
             margin-bottom: 0.5rem;
+            /* Tehnica Outline pentru contrast maxim pe orice fundal */
+            text-shadow: 
+                -1px -1px 0 #fff,  
+                 1px -1px 0 #fff,
+                -1px  1px 0 #fff,
+                 1px  1px 0 #fff,
+                 0px  2px 4px rgba(0,0,0,0.2);
         }
         .project-card p {
-            color: #1a1a1a;
-            font-weight: 500;
-            font-size: 0.875rem;
+            color: #000000;
+            font-weight: 600;
+            font-size: 0.95rem;
             line-height: 1.4;
+            /* Outline mai fin pentru textul mic */
+            text-shadow: 
+                -0.5px -0.5px 0 #fff,  
+                 0.5px -0.5px 0 #fff,
+                -0.5px  0.5px 0 #fff,
+                 0.5px  0.5px 0 #fff;
         }
     </style>
 </head>
@@ -124,7 +134,7 @@
                     <div class="project-card group relative aspect-square overflow-hidden rounded-xl bg-zinc-900 border border-white/5 hover-target">
                         <img src="https://ichef.bbci.co.uk/news/1536/cpsprodpb/6F46/production/_107068482_avon2.png.webp" class="w-full h-full object-cover">
                         <div class="overlay absolute inset-0">
-                            <div class="info-box">
+                            <div class="info-content">
                                 <h3>AVON Global</h3>
                                 <p>Design vizual campanie brand.</p>
                             </div>
@@ -134,9 +144,9 @@
                     <div class="project-card group relative aspect-square overflow-hidden rounded-xl bg-zinc-900 border border-white/5 hover-target">
                         <img src="https://png.pngtree.com/png-vector/20250122/ourlarge/pngtree-realistic-human-heart-graphic-for-cardiovascular-awareness-png-image_15302054.png" class="w-full h-full object-cover">
                         <div class="overlay absolute inset-0">
-                            <div class="info-box">
+                            <div class="info-content">
                                 <h3>Health Systems</h3>
-                                <p>Design grafic pentru prezentari medicale.</p>
+                                <p>Design grafic și prezentări pentru cardiologie.</p>
                             </div>
                         </div>
                     </div>
@@ -144,7 +154,7 @@
                     <div class="project-card group relative aspect-square overflow-hidden rounded-xl bg-zinc-900 border border-white/5 hover-target">
                         <img src="https://wwd.com/wp-content/uploads/2024/07/AVON-RENEW-Skin-Renewal-e1721767840427.jpg?w=1000" class="w-full h-full object-cover">
                         <div class="overlay absolute inset-0">
-                            <div class="info-box">
+                            <div class="info-content">
                                 <h3>AVON Renew</h3>
                                 <p>Concept vizual îngrijire avansată.</p>
                             </div>
@@ -154,7 +164,7 @@
                     <div class="project-card group relative aspect-square overflow-hidden rounded-xl bg-zinc-900 border border-white/5 hover-target">
                         <img src="https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?q=80&w=1000" class="w-full h-full object-cover">
                         <div class="overlay absolute inset-0">
-                            <div class="info-box">
+                            <div class="info-content">
                                 <h3>Pharma Core</h3>
                                 <p>Identitate vizuală sector farmaceutic.</p>
                             </div>
@@ -164,7 +174,7 @@
                     <div class="project-card group relative aspect-square overflow-hidden rounded-xl bg-zinc-900 border border-white/5 hover-target">
                         <img src="https://www.avonworldwide.com/dam/jcr:0c7d6152-d045-44b3-b0f6-34e302e2020c/Purpose-GS-001-644227-GC-APR2524-RGB.jpg" class="w-full h-full object-cover">
                         <div class="overlay absolute inset-0">
-                            <div class="info-box">
+                            <div class="info-content">
                                 <h3>AVON Purpose</h3>
                                 <p>Strategie vizuală globală.</p>
                             </div>
@@ -174,7 +184,7 @@
                     <div class="project-card group relative aspect-square overflow-hidden rounded-xl bg-zinc-900 border border-white/5 hover-target">
                         <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=1000" class="w-full h-full object-cover">
                         <div class="overlay absolute inset-0">
-                            <div class="info-box">
+                            <div class="info-content">
                                 <h3>Pure Clinic</h3>
                                 <p>Design branding clinică estetică.</p>
                             </div>
