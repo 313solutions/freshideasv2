@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The 10 | Fresh Ideas Studio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Playfair+Display:ital,wght@0,700;1,500&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Space Grotesk', sans-serif; background-color: #0c0c0c; color: #f4f4f5; cursor: none; }
+        .font-chic { font-family: 'Playfair Display', serif; }
+
+        /* The Swap Effect */
+        .member-card { position: relative; overflow: hidden; border-radius: 1rem; }
+        .photo-pro { transition: opacity 0.5s ease; }
+        .photo-funny { 
+            position: absolute; top: 0; left: 0; 
+            opacity: 0; transition: opacity 0.5s ease;
+            transform: scale(1.1);
+        }
+        .member-card:hover .photo-pro { opacity: 0; }
+        .member-card:hover .photo-funny { opacity: 1; transform: scale(1); }
+
+        #cursor { width: 20px; height: 20px; background: #fff; border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; mix-blend-mode: difference; transition: transform 0.2s ease; }
+        .grain { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: url('https://grainy-gradients.vercel.app/noise.svg'); opacity: 0.03; pointer-events: none; z-index: 100; }
+    </style>
+</head>
+<body>
+    <div id="cursor"></div>
+    <div class="grain"></div>
+
+    <nav class="p-10 flex justify-between items-center">
+        <a href="index.html" class="text-xl font-bold tracking-[0.2em]">FRESH IDEAS<span class="font-chic italic text-zinc-500 font-light">.studio</span></a>
+        <a href="index.html" class="text-[10px] uppercase tracking-widest border-b border-white/20 pb-1 hover:text-indigo-400 transition">Back to Home</a>
+    </nav>
+
+    <header class="px-10 py-20">
+        <h1 class="text-7xl font-medium tracking-tighter mb-4">THE <span class="font-chic italic text-indigo-400">10</span> BRAINS.</h1>
+        <p class="text-zinc-500 max-w-lg text-lg font-light">Small enough to care, experienced enough to deliver. Hover to see our "unfiltered" side.</p>
+    </header>
+
+    <section class="px-10 pb-40 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+        <div class="space-y-4">
+            <div class="member-card aspect-[3/4] bg-zinc-900">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800" class="photo-pro w-full h-full object-cover grayscale" alt="Pro">
+                <img src="https://images.unsplash.com/photo-1531123414780-f74242c2b052?q=80&w=800" class="photo-funny w-full h-full object-cover" alt="Funny">
+            </div>
+            <div>
+                <h3 class="font-bold text-white">Alex</h3>
+                <p class="text-[10px] uppercase tracking-widest text-zinc-600">Creative Lead & Coffee Snob</p>
+            </div>
+        </div>
+
+        <div class="space-y-4">
+            <div class="member-card aspect-[3/4] bg-zinc-900">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=800" class="photo-pro w-full h-full object-cover grayscale" alt="Pro">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800" class="photo-funny w-full h-full object-cover" alt="Funny">
+            </div>
+            <div>
+                <h3 class="font-bold text-white">Maria</h3>
+                <p class="text-[10px] uppercase tracking-widest text-zinc-600">Pharma Brand Architect</p>
+            </div>
+        </div>
+
+        </section>
+
+    <section class="py-40 bg-zinc-950 border-t border-white/5">
+        <div class="px-10 mb-20">
+            <h2 class="text-4xl font-chic italic">Unfiltered <span class="text-white font-sans not-italic font-bold">Moments.</span></h2>
+            <p class="text-zinc-600 mt-2 text-sm uppercase tracking-widest">Life inside the studio box.</p>
+        </div>
+
+        <div class="flex overflow-x-auto gap-8 px-10 pb-10 no-scrollbar">
+            <div class="flex-shrink-0 w-80 h-96 bg-zinc-900 rotate-2 rounded-xl overflow-hidden shadow-2xl">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800" class="w-full h-full object-cover opacity-60" alt="Office joke">
+            </div>
+            <div class="flex-shrink-0 w-96 h-80 bg-zinc-900 -rotate-3 mt-10 rounded-xl overflow-hidden shadow-2xl">
+                <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800" class="w-full h-full object-cover opacity-60" alt="Meeting chaos">
+            </div>
+            <div class="flex-shrink-0 w-80 h-96 bg-zinc-900 rotate-1 rounded-xl overflow-hidden shadow-2xl">
+                <img src="https://images.unsplash.com/photo-1600880212319-7837e9858b37?q=80&w=800" class="w-full h-full object-cover opacity-60" alt="Late night session">
+            </div>
+        </div>
+    </section>
+
+    <footer class="p-10 border-t border-white/5 text-center text-zinc-800 text-[10px] tracking-[0.4em] uppercase">
+        Fresh Ideas — Human Powered.
+    </footer>
+
+    <script>
+        const cursor = document.getElementById('cursor');
+        document.addEventListener('mousemove', e => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+    </script>
+</body>
+</html>
