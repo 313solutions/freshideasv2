@@ -45,36 +45,35 @@
             transition: opacity 0.2s ease;
         }
 
-        /* Becul dispare complet la hover pe elemente interactive */
+        /* Becul dispare la hover */
         .hide-custom-cursor #cursor, 
-        .hide-custom-cursor #cursor-glow { 
-            opacity: 0; 
-        }
+        .hide-custom-cursor #cursor-glow { opacity: 0; }
 
         .bg-vignette {
             background: radial-gradient(circle at 50% 50%, #0a0a0a 0%, #050505 100%);
         }
 
-        /* Stil Carduri */
-        .project-card {
-            cursor: pointer;
-        }
-        .project-card img {
-            transition: transform 0.8s ease;
-        }
+        /* Project Cards */
+        .project-card { cursor: pointer; }
         .project-card .overlay {
             background: rgba(0, 0, 0, 0);
             transition: background 0.3s ease;
         }
         .project-card:hover .overlay {
-            background: rgba(0, 0, 0, 0.05); /* Shade de 5% la hover */
+            background: rgba(0, 0, 0, 0.05); /* Shade discret 5% */
         }
+
+        /* TEXT NEGRU pe hover */
         .project-card .info {
             opacity: 0;
             transition: opacity 0.3s ease;
+            color: #000000; /* Text Negru conform cerinței */
         }
         .project-card:hover .info {
             opacity: 1;
+        }
+        .project-card .info p {
+            color: rgba(0, 0, 0, 0.7); /* Descriere negru estompat */
         }
     </style>
 </head>
@@ -110,17 +109,17 @@
                         <div class="overlay absolute inset-0 flex flex-col justify-end p-8">
                             <div class="info">
                                 <h3 class="text-2xl font-bold">AVON Global</h3>
-                                <p class="text-sm text-zinc-400 mt-2">Design vizual campanie brand.</p>
+                                <p class="text-sm font-medium mt-2">Design vizual campanie brand.</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="project-card group relative aspect-square overflow-hidden rounded-xl bg-zinc-900 border border-white/5 hover-target">
-                        <img src="https://images.unsplash.com/photo-1504439468489-c8920d796a29?q=80&w=1000" class="w-full h-full object-cover" alt="Medical Branding">
+                        <img src="https://slidemodel.com/wp-content/uploads/60608-01-cardiology-powerpoint-template-16x9-1-558x314.jpg" class="w-full h-full object-cover" alt="Health Systems Presentation">
                         <div class="overlay absolute inset-0 flex flex-col justify-end p-8">
                             <div class="info">
                                 <h3 class="text-2xl font-bold">Health Systems</h3>
-                                <p class="text-sm text-zinc-400 mt-2">Graphic design și prezentări medicale profesionale.</p>
+                                <p class="text-sm font-medium mt-2">Graphic design și prezentări medicale profesionale.</p>
                             </div>
                         </div>
                     </div>
@@ -130,17 +129,17 @@
                         <div class="overlay absolute inset-0 flex flex-col justify-end p-8">
                             <div class="info">
                                 <h3 class="text-2xl font-bold">AVON Renew</h3>
-                                <p class="text-sm text-zinc-400 mt-2">Concept vizual îngrijire avansată.</p>
+                                <p class="text-sm font-medium mt-2">Concept vizual îngrijire avansată.</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="project-card group relative aspect-square overflow-hidden rounded-xl bg-zinc-900 border border-white/5 hover-target">
-                        <img src="https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?q=80&w=1000" class="w-full h-full object-cover" alt="Pharmaceutical Design">
+                        <img src="https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?q=80&w=1000" class="w-full h-full object-cover">
                         <div class="overlay absolute inset-0 flex flex-col justify-end p-8">
                             <div class="info">
                                 <h3 class="text-2xl font-bold">Pharma Core</h3>
-                                <p class="text-sm text-zinc-400 mt-2">Identitate și design grafic pentru sectorul farmaceutic.</p>
+                                <p class="text-sm font-medium mt-2">Identitate și design grafic pentru sectorul farmaceutic.</p>
                             </div>
                         </div>
                     </div>
@@ -150,7 +149,7 @@
                         <div class="overlay absolute inset-0 flex flex-col justify-end p-8">
                             <div class="info">
                                 <h3 class="text-2xl font-bold">AVON Purpose</h3>
-                                <p class="text-sm text-zinc-400 mt-2">Strategie vizuală globală.</p>
+                                <p class="text-sm font-medium mt-2">Strategie vizuală globală.</p>
                             </div>
                         </div>
                     </div>
@@ -160,7 +159,7 @@
                         <div class="overlay absolute inset-0 flex flex-col justify-end p-8">
                             <div class="info">
                                 <h3 class="text-2xl font-bold">Pure Clinic</h3>
-                                <p class="text-sm text-zinc-400 mt-2">Design identitate și branding clinică estetică.</p>
+                                <p class="text-sm font-medium mt-2">Identitate și branding clinică estetică.</p>
                             </div>
                         </div>
                     </div>
@@ -194,12 +193,11 @@
             });
         });
 
-        // Logica cursorului: ascunde becul și arată mânuța pe poze/link-uri
         const hoverTargets = document.querySelectorAll('.hover-target');
         hoverTargets.forEach(el => {
             el.addEventListener('mouseenter', () => {
                 body.classList.add('hide-custom-cursor');
-                el.style.cursor = 'pointer'; // Mânuța nativă
+                el.style.cursor = 'pointer';
             });
             el.addEventListener('mouseleave', () => {
                 body.classList.remove('hide-custom-cursor');
