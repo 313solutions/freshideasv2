@@ -19,19 +19,20 @@
             font-family: 'Space Grotesk', sans-serif; 
             background-color: var(--bg); 
             color: #f4f4f5;
-            cursor: none;
+            cursor: none; /* Cursor nativ ascuns implicit */
             overflow-x: hidden;
+            width: 100%;
         }
         .font-chic { font-family: 'Playfair Display', serif; }
 
-        /* Cursor Bec curat */
+        /* Cursor Bec - Stilul din project.html */
         #cursor {
             position: fixed;
             pointer-events: none;
             z-index: 9999;
             transform: translate(-50%, -50%);
             mix-blend-mode: screen;
-            transition: transform 0.15s ease-out;
+            transition: transform 0.15s ease-out, opacity 0.2s ease;
         }
         
         #cursor i {
@@ -40,7 +41,7 @@
             filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.4));
         }
 
-        /* Lumina de sub cursor - Marime ok, intensitate crescuta cu ~10% */
+        /* Lumina de sub cursor */
         #cursor-glow {
             width: 180px; 
             height: 180px;
@@ -49,6 +50,13 @@
             pointer-events: none;
             z-index: 9998;
             transform: translate(-50%, -50%);
+            transition: opacity 0.2s ease;
+        }
+
+        /* Ascundere bec la hover pe elemente .hover-target */
+        .hide-custom-cursor #cursor, 
+        .hide-custom-cursor #cursor-glow { 
+            opacity: 0; 
         }
 
         nav { background: transparent; }
@@ -75,15 +83,15 @@
     <div id="cursor-glow"></div>
 
     <nav class="absolute top-0 left-0 w-full z-50 px-10 py-10 flex justify-between items-center">
-        <a href="index.html" class="text-xl font-bold tracking-[0.3em] flex items-center gap-4">
+        <a href="index.html" class="text-xl font-bold tracking-[0.3em] flex items-center gap-4 hover-target">
             <span class="w-1.5 h-1.5 bg-indigo-400 rounded-full"></span>
-            FRESH IDEAS<span class="font-chic italic text-zinc-500 font-light lowercase">.fresh</span>
+            FRESH IDEAS
         </a>
         <div class="hidden md:flex gap-12 text-[11px] uppercase tracking-[0.4em] font-semibold text-zinc-400">
-            <a href="projects.html" class="hover:text-indigo-300 transition-colors">Proiecte</a>
-            <a href="team.html" class="hover:text-indigo-300 transition-colors">Echipa</a>
-            <a href="#expertiza" class="hover:text-white transition-colors">Expertiză</a>
-            <a href="#contact" class="text-indigo-400">Colaborare</a>
+            <a href="projects.html" class="hover:text-indigo-300 transition-colors hover-target">Proiecte</a>
+            <a href="team.html" class="hover:text-indigo-300 transition-colors hover-target">Echipa</a>
+            <a href="#expertiza" class="hover:text-white transition-colors hover-target">Expertiză</a>
+            <a href="#contact" class="text-indigo-400 hover-target">Colaborare</a>
         </div>
     </nav>
 
@@ -118,7 +126,7 @@
                 </div>
                 
                 <div class="grid md:grid-cols-2 gap-32">
-                    <div class="group relative">
+                    <div class="group relative hover-target">
                         <div class="reveal-img aspect-[3/4] rounded-2xl mb-12 shadow-2xl overflow-hidden bg-zinc-900">
                             <img src="https://worldbranddesign.com/wp-content/uploads/2019/12/Metode-by-Goods-Full-Range.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition duration-[1.5s] ease-out" alt="Medical & Farmaceutic">
                         </div>
@@ -128,7 +136,7 @@
                         </div>
                     </div>
 
-                    <div class="group relative md:mt-48">
+                    <div class="group relative md:mt-48 hover-target">
                         <div class="reveal-img aspect-[3/4] rounded-2xl mb-12 shadow-2xl overflow-hidden bg-zinc-900">
                             <img src="https://img.businessoffashion.com/resizer/v2/SR7CR5NN2BBFHKJIB2XJKXIZWA.jpg?auth=d618a92d07034bc79235d3b7ab8ccdcfb84af5d80f84474e685c4fc673bfcaa7&width=1440" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition duration-[1.5s] ease-out" alt="Cosmetice AVON">
                         </div>
@@ -152,7 +160,7 @@
 
         <section class="py-20 px-10">
             <div class="max-w-7xl mx-auto">
-                <a href="projects.html" class="block group relative w-full aspect-[21/9] rounded-[2rem] overflow-hidden">
+                <a href="projects.html" class="block group relative w-full aspect-[21/9] rounded-[2rem] overflow-hidden hover-target">
                     <div class="absolute inset-0 bg-zinc-900">
                          <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=1600" class="w-full h-full object-cover opacity-20 group-hover:opacity-40 transition duration-[2s]" alt="Proiecte">
                     </div>
@@ -171,13 +179,13 @@
         <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-32">
             <div>
                 <h2 class="text-7xl font-medium tracking-tighter mb-12">Începe <br><span class="font-chic italic text-indigo-300">proaspăt.</span></h2>
-                <a href="mailto:office@freshideas.design" class="text-2xl font-light text-zinc-500 hover:text-white transition-all border-b border-zinc-800 pb-2">office@freshideas.design</a>
+                <a href="mailto:office@freshideas.design" class="text-2xl font-light text-zinc-500 hover:text-white transition-all border-b border-zinc-800 pb-2 hover-target">office@freshideas.design</a>
             </div>
             <div class="flex flex-col justify-between items-start md:items-end">
                 <div class="flex gap-12 text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-600">
-                    <a href="#" class="hover:text-white transition-colors">Instagram</a>
-                    <a href="#" class="hover:text-white transition-colors">Behance</a>
-                    <a href="#" class="hover:text-white transition-colors">Dribbble</a>
+                    <a href="#" class="hover:text-white transition-colors hover-target">Instagram</a>
+                    <a href="#" class="hover:text-white transition-colors hover-target">Behance</a>
+                    <a href="#" class="hover:text-white transition-colors hover-target">Dribbble</a>
                 </div>
                 <div class="mt-32 text-left md:text-right">
                     <p class="text-zinc-700 text-[10px] tracking-widest uppercase mb-4">Fresh Ideas © 2026</p>
@@ -190,7 +198,9 @@
     <script>
         const cursor = document.getElementById('cursor');
         const glow = document.getElementById('cursor-glow');
+        const body = document.body;
         
+        // Urmărire cursor
         document.addEventListener('mousemove', e => {
             window.requestAnimationFrame(() => {
                 cursor.style.left = e.clientX + 'px';
@@ -200,17 +210,17 @@
             });
         });
 
-        document.querySelectorAll('a, button, .group').forEach(el => {
+        // Logica de interacțiune identică cu cea din project.html
+        const hoverTargets = document.querySelectorAll('.hover-target, a, button');
+        hoverTargets.forEach(el => {
             el.addEventListener('mouseenter', () => {
-                cursor.style.transform = 'translate(-50%, -50%) scale(1.3)';
-                glow.style.background = 'radial-gradient(circle, rgba(165, 180, 252, 0.22) 0%, transparent 65%)';
+                body.classList.add('hide-custom-cursor');
+                el.style.cursor = 'pointer'; // Arată mânuța nativă
             });
             el.addEventListener('mouseleave', () => {
-                cursor.style.transform = 'translate(-50%, -50%) scale(1)';
-                glow.style.background = 'radial-gradient(circle, rgba(165, 180, 252, 0.18) 0%, transparent 65%)';
+                body.classList.remove('hide-custom-cursor');
             });
         });
     </script>
 </body>
 </html>
-
