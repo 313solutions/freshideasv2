@@ -45,7 +45,7 @@
             transition: opacity 0.2s ease;
         }
 
-        /* Becul dispare la hover pe poze/link-uri */
+        /* Becul dispare la hover */
         .hide-custom-cursor #cursor, 
         .hide-custom-cursor #cursor-glow { 
             opacity: 0; 
@@ -72,7 +72,7 @@
             background: rgba(0, 0, 0, 0.05);
         }
 
-        /* TEXT ALB CU OUTLINE NEGRU FIN (Fără Shadow/Background) */
+        /* TEXT ALB CU OUTLINE NEGRU MAI GROS */
         .project-card .info-content {
             opacity: 0;
             transform: translateY(10px);
@@ -89,16 +89,17 @@
             font-weight: 800;
             font-size: 1.75rem;
             margin-bottom: 0.5rem;
-            /* Outline negru fin */
-            -webkit-text-stroke: 0.5px #000000;
+            /* Outline negru mai vizibil și gros */
+            -webkit-text-stroke: 1.2px #000000;
+            letter-spacing: -0.02em;
         }
         .project-card p {
             color: #ffffff;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 0.95rem;
             line-height: 1.4;
-            /* Outline negru foarte fin */
-            -webkit-text-stroke: 0.3px #000000;
+            /* Outline negru mediu pentru lizibilitate */
+            -webkit-text-stroke: 0.8px #000000;
         }
     </style>
 </head>
@@ -184,7 +185,7 @@
                         <div class="overlay absolute inset-0">
                             <div class="info-content">
                                 <h3>Pure Clinic</h3>
-                                <p>Design identitate și branding clinică estetică.</p>
+                                <p>Design branding clinică estetică.</p>
                             </div>
                         </div>
                     </div>
@@ -218,7 +219,6 @@
             });
         });
 
-        // Logica cursorului: ascunde becul și arată mânuța nativă
         const hoverTargets = document.querySelectorAll('.hover-target');
         hoverTargets.forEach(el => {
             el.addEventListener('mouseenter', () => {
