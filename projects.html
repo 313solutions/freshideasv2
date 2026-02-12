@@ -45,34 +45,35 @@
             transition: opacity 0.2s ease;
         }
 
-        .hide-cursor #cursor, 
-        .hide-cursor #cursor-glow { opacity: 0; }
+        /* Becul dispare complet la hover pe elemente clickabile */
+        .hide-custom-cursor #cursor, 
+        .hide-custom-cursor #cursor-glow { 
+            opacity: 0; 
+        }
 
         .bg-vignette {
             background: radial-gradient(circle at 50% 50%, #0a0a0a 0%, #050505 100%);
         }
 
-        /* Project Cards - Colorate default, shade 5% la hover */
-        .project-card img {
-            filter: grayscale(0%); /* Colorate implicit */
-            transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+        /* Imagine colorată default, shade 5% la hover */
+        .project-card {
+            cursor: pointer;
         }
-
+        .project-card img {
+            transition: transform 0.8s ease;
+        }
         .project-card .overlay {
-            background: rgba(0, 0, 0, 0); /* Transparent implicit */
+            background: rgba(0, 0, 0, 0);
             transition: background 0.3s ease;
         }
-
         .project-card:hover .overlay {
-            background: rgba(0, 0, 0, 0.05); /* Shade de 5% negru la mouseover */
+            background: rgba(0, 0, 0, 0.05); /* Shade discret de 5% */
         }
-
-        /* Afișare text doar la hover */
-        .project-card .project-info {
+        .project-card .info {
             opacity: 0;
             transition: opacity 0.3s ease;
         }
-        .project-card:hover .project-info {
+        .project-card:hover .info {
             opacity: 1;
         }
     </style>
@@ -83,14 +84,14 @@
     <div id="cursor-glow"></div>
 
     <nav class="w-full px-10 py-10 flex justify-between items-center">
-        <a href="index.html" class="text-xl font-bold tracking-[0.3em] flex items-center gap-4 cursor-pointer">
+        <a href="index.html" class="text-xl font-bold tracking-[0.3em] flex items-center gap-4 hover-target">
             <span class="w-1.5 h-1.5 bg-indigo-400 rounded-full"></span>
             FRESH IDEAS
         </a>
         <div class="hidden md:flex gap-12 text-[11px] uppercase tracking-[0.4em] font-semibold text-zinc-400">
-            <a href="index.html" class="hover:text-white transition-colors cursor-pointer">Acasa</a>
-            <a href="team.html" class="hover:text-indigo-300 transition-colors cursor-pointer">Echipa</a>
-            <a href="#contact" class="hover:text-white transition-colors cursor-pointer">Contact</a>
+            <a href="index.html" class="hover:text-white transition-colors hover-target">Acasa</a>
+            <a href="team.html" class="hover:text-indigo-300 transition-colors hover-target">Echipa</a>
+            <a href="#contact" class="hover:text-white transition-colors hover-target">Contact</a>
         </div>
     </nav>
 
@@ -104,62 +105,62 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     
-                    <div class="project-card group relative aspect-square overflow-hidden rounded-xl bg-zinc-900 border border-white/5">
-                        <img src="https://ichef.bbci.co.uk/news/1536/cpsprodpb/6F46/production/_107068482_avon2.png.webp" class="w-full h-full object-cover group-hover:scale-105">
+                    <div class="project-card group relative aspect-square overflow-hidden rounded-xl bg-zinc-900 border border-white/5 hover-target">
+                        <img src="https://ichef.bbci.co.uk/news/1536/cpsprodpb/6F46/production/_107068482_avon2.png.webp" class="w-full h-full object-cover">
                         <div class="overlay absolute inset-0 flex flex-col justify-end p-8">
-                            <div class="project-info">
+                            <div class="info">
                                 <h3 class="text-2xl font-bold">AVON Global</h3>
                                 <p class="text-sm text-zinc-400 mt-2">Design vizual campanie brand.</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="project-card group relative aspect-square overflow-hidden rounded-xl bg-zinc-900 border border-white/5">
-                        <img src="https://images.unsplash.com/photo-1576091160550-217359f4ecf8?q=80&w=1000" class="w-full h-full object-cover group-hover:scale-105" alt="Medical Systems">
+                    <div class="project-card group relative aspect-square overflow-hidden rounded-xl bg-zinc-900 border border-white/5 hover-target">
+                        <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?q=80&w=1000" class="w-full h-full object-cover" alt="Medical Technology">
                         <div class="overlay absolute inset-0 flex flex-col justify-end p-8">
-                            <div class="project-info">
+                            <div class="info">
                                 <h3 class="text-2xl font-bold">Health Systems</h3>
-                                <p class="text-sm text-zinc-400 mt-2">Interfețe digitale medicale.</p>
+                                <p class="text-sm text-zinc-400 mt-2">Interfețe digitale pentru sisteme medicale.</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="project-card group relative aspect-square overflow-hidden rounded-xl bg-zinc-900 border border-white/5">
-                        <img src="https://wwd.com/wp-content/uploads/2024/07/AVON-RENEW-Skin-Renewal-e1721767840427.jpg?w=1000" class="w-full h-full object-cover group-hover:scale-105">
+                    <div class="project-card group relative aspect-square overflow-hidden rounded-xl bg-zinc-900 border border-white/5 hover-target">
+                        <img src="https://wwd.com/wp-content/uploads/2024/07/AVON-RENEW-Skin-Renewal-e1721767840427.jpg?w=1000" class="w-full h-full object-cover">
                         <div class="overlay absolute inset-0 flex flex-col justify-end p-8">
-                            <div class="project-info">
+                            <div class="info">
                                 <h3 class="text-2xl font-bold">AVON Renew</h3>
                                 <p class="text-sm text-zinc-400 mt-2">Concept vizual îngrijire avansată.</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="project-card group relative aspect-square overflow-hidden rounded-xl bg-zinc-900 border border-white/5">
-                        <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=1000" class="w-full h-full object-cover group-hover:scale-105" alt="Pharma Core">
+                    <div class="project-card group relative aspect-square overflow-hidden rounded-xl bg-zinc-900 border border-white/5 hover-target">
+                        <img src="https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?q=80&w=1000" class="w-full h-full object-cover" alt="Pharmaceutical Research">
                         <div class="overlay absolute inset-0 flex flex-col justify-end p-8">
-                            <div class="project-info">
+                            <div class="info">
                                 <h3 class="text-2xl font-bold">Pharma Core</h3>
-                                <p class="text-sm text-zinc-400 mt-2">Design ambalaj farmaceutic.</p>
+                                <p class="text-sm text-zinc-400 mt-2">Arhitectură de brand farmaceutic.</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="project-card group relative aspect-square overflow-hidden rounded-xl bg-zinc-900 border border-white/5">
-                        <img src="https://www.avonworldwide.com/dam/jcr:0c7d6152-d045-44b3-b0f6-34e302e2020c/Purpose-GS-001-644227-GC-APR2524-RGB.jpg" class="w-full h-full object-cover group-hover:scale-105">
+                    <div class="project-card group relative aspect-square overflow-hidden rounded-xl bg-zinc-900 border border-white/5 hover-target">
+                        <img src="https://www.avonworldwide.com/dam/jcr:0c7d6152-d045-44b3-b0f6-34e302e2020c/Purpose-GS-001-644227-GC-APR2524-RGB.jpg" class="w-full h-full object-cover">
                         <div class="overlay absolute inset-0 flex flex-col justify-end p-8">
-                            <div class="project-info">
+                            <div class="info">
                                 <h3 class="text-2xl font-bold">AVON Purpose</h3>
-                                <p class="text-sm text-zinc-400 mt-2">Arhitectură vizuală strategică.</p>
+                                <p class="text-sm text-zinc-400 mt-2">Strategie vizuală globală.</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="project-card group relative aspect-square overflow-hidden rounded-xl bg-zinc-900 border border-white/5">
-                        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=1000" class="w-full h-full object-cover group-hover:scale-105">
+                    <div class="project-card group relative aspect-square overflow-hidden rounded-xl bg-zinc-900 border border-white/5 hover-target">
+                        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=1000" class="w-full h-full object-cover">
                         <div class="overlay absolute inset-0 flex flex-col justify-end p-8">
-                            <div class="project-info">
+                            <div class="info">
                                 <h3 class="text-2xl font-bold">Pure Clinic</h3>
-                                <p class="text-sm text-zinc-400 mt-2">Branding estetică medicală.</p>
+                                <p class="text-sm text-zinc-400 mt-2">Design identitate clinică estetică.</p>
                             </div>
                         </div>
                     </div>
@@ -172,8 +173,8 @@
     <footer id="contact" class="py-20 px-10 border-t border-white/5 bg-[#050505]">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
             <div class="text-left">
-                <h2 class="text-2xl font-bold tracking-tighter">Fresh Ideas</h2>
-                <a href="mailto:office@freshideas.design" class="text-zinc-500 hover:text-white transition-all text-sm cursor-pointer">office@freshideas.design</a>
+                <h2 class="text-2xl font-bold tracking-tighter hover-target">Fresh Ideas</h2>
+                <a href="mailto:office@freshideas.design" class="text-zinc-500 hover:text-white transition-all text-sm hover-target">office@freshideas.design</a>
             </div>
             <p class="text-zinc-700 text-[10px] tracking-widest uppercase">© 2026</p>
         </div>
@@ -193,13 +194,15 @@
             });
         });
 
-        const interactables = document.querySelectorAll('a, .cursor-pointer, .project-card');
-        interactables.forEach(el => {
+        // Logica pentru ascunderea becului și afișarea mânuței
+        const hoverTargets = document.querySelectorAll('.hover-target');
+        hoverTargets.forEach(el => {
             el.addEventListener('mouseenter', () => {
-                body.classList.add('hide-cursor');
+                body.classList.add('hide-custom-cursor');
+                el.style.cursor = 'pointer'; // Forțează mânuța (pointer) browserului
             });
             el.addEventListener('mouseleave', () => {
-                body.classList.remove('hide-cursor');
+                body.classList.remove('hide-custom-cursor');
             });
         });
     </script>
