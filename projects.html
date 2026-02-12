@@ -1,179 +1,232 @@
 <!DOCTYPE html>
-<html lang="ro">
+<html lang="ro" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portofoliu | Fresh Ideas Studio</title>
+    <title>Fresh Ideas | Design Architects</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Playfair+Display:ital,wght@0,700;1,500&display=swap" rel="stylesheet">
     
     <style>
+        :root { 
+            --bg: #080808; 
+            --accent: #d4d4d8; 
+            --highlight: #a5b4fc;
+        }
         body { 
             font-family: 'Space Grotesk', sans-serif; 
-            background-color: #0c0c0c; 
-            color: #f4f4f5; 
-            margin: 0;
-            /* Blocăm scroll-ul pe tot corpul paginii pentru a preveni fuga în jos */
-            overflow: hidden; 
-            height: 100vh;
+            background-color: var(--bg); 
+            color: #f4f4f5;
+            cursor: none;
+            /* Fix pentru scroll lateral */
+            overflow-x: hidden;
+            width: 100%;
         }
         .font-chic { font-family: 'Playfair Display', serif; }
 
-        /* Zona de Scroll Orizontal */
-        .scroll-wrapper {
-            width: 100vw;
-            overflow-x: auto;
-            overflow-y: hidden;
-            white-space: nowrap;
-            padding: 5vh 0;
-            cursor: grab;
-            scroll-behavior: smooth;
-            -webkit-overflow-scrolling: touch;
+        /* Cursor Bec curat conform cerinței tale */
+        #cursor {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            mix-blend-mode: screen;
+            transition: transform 0.15s ease-out;
+        }
+        
+        #cursor i {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.95);
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.4));
         }
 
-        /* Ascundere scrollbar */
-        .scroll-wrapper::-webkit-scrollbar { display: none; }
+        #cursor-glow {
+            width: 180px; 
+            height: 180px;
+            background: radial-gradient(circle, rgba(165, 180, 252, 0.18) 0%, transparent 65%);
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            transform: translate(-50%, -50%);
+        }
 
-        .project-item {
-            display: inline-block;
-            width: 30vw; /* Dimensiune redusă pentru a vedea mai multe proiecte */
-            height: 50vh; 
-            margin-left: 3vw;
-            vertical-align: top;
-            white-space: normal; 
-            position: relative;
-            border-radius: 1.5rem;
+        nav { background: transparent; }
+
+        .reveal-img {
             overflow: hidden;
-            transition: transform 0.5s ease;
+            position: relative;
+            transition: all 1.2s cubic-bezier(0.19, 1, 0.22, 1);
         }
 
-        .project-item:last-child { margin-right: 10vw; }
-        .project-item:hover { transform: translateY(-10px); }
-
-        .tag {
-            font-size: 10px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            padding: 4px 12px;
-            border-radius: 100px;
-            margin-bottom: 12px;
-            display: inline-block;
+        .text-outline {
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(255,255,255,0.1);
         }
 
-        .medical-tag { background: rgba(129, 140, 248, 0.1); color: #818cf8; border: 1px solid rgba(129, 140, 248, 0.2); }
-        .makeup-tag { background: rgba(244, 114, 182, 0.1); color: #f472b6; border: 1px solid rgba(244, 114, 182, 0.2); }
+        .bg-vignette {
+            background: radial-gradient(circle at 50% 50%, #0a0a0a 0%, #050505 100%);
+        }
 
-        #cursor { width: 20px; height: 20px; background: #fff; border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; mix-blend-mode: difference; transition: transform 0.2s ease; top:0; left:0;}
+        /* Overlay text pentru proiecte */
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
     </style>
 </head>
-<body>
-    <div id="cursor"></div>
+<body class="bg-vignette">
 
-    <nav class="fixed top-0 w-full z-50 p-8 flex justify-between items-center mix-blend-difference">
-        <a href="#" class="text-xl font-bold tracking-tighter">FRESH IDEAS<span class="font-chic italic text-zinc-500 font-light">.studio</span></a>
-        <div class="flex gap-8 text-[10px] uppercase tracking-widest font-bold">
-            <a href="#" class="hover:text-white transition text-zinc-400">Echipa</a>
-            <a href="#" class="hover:text-white transition text-zinc-400">Acasă</a>
+    <div id="cursor"><i class="fa-solid fa-lightbulb"></i></div>
+    <div id="cursor-glow"></div>
+
+    <nav class="absolute top-0 left-0 w-full z-50 px-10 py-10 flex justify-between items-center">
+        <a href="index.html" class="text-xl font-bold tracking-[0.3em] flex items-center gap-4">
+            <span class="w-1.5 h-1.5 bg-indigo-400 rounded-full"></span>
+            FRESH IDEAS<span class="font-chic italic text-zinc-500 font-light lowercase">.fresh</span>
+        </a>
+        <div class="hidden md:flex gap-12 text-[11px] uppercase tracking-[0.4em] font-semibold text-zinc-400">
+            <a href="projects.html" class="hover:text-indigo-300 transition-colors">Proiecte</a>
+            <a href="team.html" class="hover:text-indigo-300 transition-colors">Echipa</a>
+            <a href="#expertiza" class="hover:text-white transition-colors">Expertiză</a>
+            <a href="#contact" class="text-indigo-400">Colaborare</a>
         </div>
     </nav>
 
-    <div class="pt-32 px-10">
-        <h1 class="text-5xl font-medium tracking-tighter">PROIECTE <span class="font-chic italic">Selectate.</span></h1>
-    </div>
+    <main class="w-full">
+        <section class="min-h-screen flex items-center px-10 pt-32">
+            <div class="max-w-7xl mx-auto w-full grid lg:grid-cols-12 gap-16">
+                <div class="lg:col-span-8">
+                    <h1 class="text-[clamp(3.5rem,8vw,9rem)] leading-[0.85] font-medium tracking-tighter">
+                        ESTETICĂ <br> <span class="font-chic italic text-indigo-300">Chic</span> <br> 
+                        <span class="text-outline">SUFLET</span> <br> CLINIC.
+                    </h1>
+                </div>
+                <div class="lg:col-span-4 flex flex-col justify-end pb-12">
+                    <div class="space-y-8">
+                        <p class="text-xl text-zinc-400 leading-relaxed font-light">
+                            Definim standardele vizuale la granița dintre <span class="text-white font-medium">rigoarea medicală</span> și <span class="text-white font-medium">eleganța estetică</span>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <div class="scroll-wrapper" id="scrollTrack">
-        
-        <div class="project-item group">
-            <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700" alt="BioTech">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent p-8 flex flex-col justify-end">
-                <span class="tag medical-tag">Identitate Medicală</span>
-                <h2 class="text-2xl font-bold text-white">BioTech Lab</h2>
-                <p class="text-zinc-400 text-sm mt-2">Sisteme vizuale pentru distribuție farmaceutică.</p>
+        <section id="expertiza" class="py-20 bg-[#0a0a0a]">
+            <div class="max-w-7xl mx-auto px-10">
+                <div class="flex justify-between items-end mb-16">
+                    <h2 class="text-4xl font-chic italic">Proiecte Recente</h2>
+                    <p class="text-zinc-500 text-[10px] uppercase tracking-[0.3em]">Portofoliu Selectiv</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <div class="project-card group relative aspect-square overflow-hidden rounded-xl bg-zinc-900">
+                        <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=1000" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700">
+                        <div class="project-overlay absolute inset-0 bg-black/60 flex flex-col justify-end p-8 opacity-0 transition-opacity duration-500">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Avon_logo.svg" class="w-16 mb-4 invert" alt="AVON">
+                            <h3 class="text-xl font-bold">AVON Beauty</h3>
+                            <p class="text-xs text-zinc-400 uppercase tracking-widest mt-2">Design Ambalaj Editorial</p>
+                        </div>
+                    </div>
+
+                    <div class="project-card group relative aspect-square overflow-hidden rounded-xl bg-zinc-900">
+                        <img src="https://images.unsplash.com/photo-1585435557343-3b092031a831?q=80&w=1000" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700">
+                        <div class="project-overlay absolute inset-0 bg-black/60 flex flex-col justify-end p-8 opacity-0 transition-opacity duration-500">
+                            <h3 class="text-xl font-bold">BioTech Pharma</h3>
+                            <p class="text-xs text-zinc-400 uppercase tracking-widest mt-2">Identitate Vizuală Medicală</p>
+                        </div>
+                    </div>
+
+                    <div class="project-card group relative aspect-square overflow-hidden rounded-xl bg-zinc-900">
+                        <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?q=80&w=1000" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700">
+                        <div class="project-overlay absolute inset-0 bg-black/60 flex flex-col justify-end p-8 opacity-0 transition-opacity duration-500">
+                            <h3 class="text-xl font-bold">Skin Clinic</h3>
+                            <p class="text-xs text-zinc-400 uppercase tracking-widest mt-2">Branding Premium</p>
+                        </div>
+                    </div>
+
+                    <div class="project-card group relative aspect-square overflow-hidden rounded-xl bg-zinc-900">
+                        <img src="https://images.unsplash.com/photo-1596462502278-27bfdc4033c8?q=80&w=1000" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700">
+                        <div class="project-overlay absolute inset-0 bg-black/60 flex flex-col justify-end p-8 opacity-0 transition-opacity duration-500">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Avon_logo.svg" class="w-16 mb-4 invert" alt="AVON">
+                            <h3 class="text-xl font-bold">AVON Care</h3>
+                            <p class="text-xs text-zinc-400 uppercase tracking-widest mt-2">Campanie Vizuală Globală</p>
+                        </div>
+                    </div>
+
+                    <div class="project-card group relative aspect-square overflow-hidden rounded-xl bg-zinc-900">
+                        <img src="https://images.unsplash.com/photo-1631549916768-4119b2e5f926?q=80&w=1000" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700">
+                        <div class="project-overlay absolute inset-0 bg-black/60 flex flex-col justify-end p-8 opacity-0 transition-opacity duration-500">
+                            <h3 class="text-xl font-bold">Vax Research</h3>
+                            <p class="text-xs text-zinc-400 uppercase tracking-widest mt-2">UI/UX Data Science</p>
+                        </div>
+                    </div>
+
+                    <div class="project-card group relative aspect-square overflow-hidden rounded-xl bg-zinc-900">
+                        <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1000" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700">
+                        <div class="project-overlay absolute inset-0 bg-black/60 flex flex-col justify-end p-8 opacity-0 transition-opacity duration-500">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Avon_logo.svg" class="w-16 mb-4 invert" alt="AVON">
+                            <h3 class="text-xl font-bold">AVON Renew</h3>
+                            <p class="text-xs text-zinc-400 uppercase tracking-widest mt-2">Arhitectură de Brand</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="py-40 px-10 relative">
+            <div class="max-w-4xl mx-auto text-center relative z-10">
+                <p class="text-3xl md:text-5xl font-light leading-snug text-zinc-300">
+                    "Suntem suficient de mici pentru a ne păsa de <span class="font-chic italic text-white">sufletul</span> brandului tău, dar suficient de experimentați pentru a gestiona <span class="text-white">viziuni ambițioase</span>."
+                </p>
+                <div class="mt-16 inline-block w-12 h-px bg-indigo-400"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact" class="py-40 px-10 border-t border-white/5 bg-[#050505]">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-32">
+            <div>
+                <h2 class="text-6xl font-medium tracking-tighter mb-12">Începe <br><span class="font-chic italic text-indigo-300">proaspăt.</span></h2>
+                <a href="mailto:office@freshideas.design" class="text-2xl font-light text-zinc-500 hover:text-white transition-all border-b border-zinc-800 pb-2">office@freshideas.design</a>
+            </div>
+            <div class="flex flex-col justify-between items-start md:items-end">
+                <div class="flex gap-12 text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-600">
+                    <a href="#" class="hover:text-white">Instagram</a>
+                    <a href="#" class="hover:text-white">Behance</a>
+                </div>
+                <div class="mt-32 text-left md:text-right">
+                    <p class="text-zinc-700 text-[10px] tracking-widest uppercase mb-4">Fresh Ideas © 2026</p>
+                    <p class="text-zinc-500 text-xs italic">Creativitate Pură. Impact Global.</p>
+                </div>
             </div>
         </div>
-
-        <div class="project-item group">
-            <img src="https://images.unsplash.com/photo-1625093765161-073849767664?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700" alt="AVON">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent p-8 flex flex-col justify-end">
-                <span class="tag makeup-tag">Artă Cosmetică</span>
-                <h2 class="text-2xl font-bold text-white">AVON Beauty</h2>
-                <p class="text-zinc-400 text-sm mt-2">Design de ambalaj editorial pentru noua gamă.</p>
-            </div>
-        </div>
-
-        <div class="project-item group">
-            <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700" alt="Clinic">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent p-8 flex flex-col justify-end">
-                <span class="tag medical-tag">UX Clinică</span>
-                <h2 class="text-2xl font-bold text-white">Stellar Clinic</h2>
-                <p class="text-zinc-400 text-sm mt-2">Experiență digitală pentru pacienți dermato.</p>
-            </div>
-        </div>
-
-        <div class="project-item group">
-            <img src="https://images.unsplash.com/photo-1596462502278-27bfdc4033c8?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700" alt="Aura">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent p-8 flex flex-col justify-end">
-                <span class="tag makeup-tag">Design Ambalaj</span>
-                <h2 class="text-2xl font-bold text-white">Aura Skin</h2>
-                <p class="text-zinc-400 text-sm mt-2">Arhitectură vizuală sustenabilă pentru beauty organic.</p>
-            </div>
-        </div>
-
-        <div class="project-item flex items-center justify-center border border-white/10 bg-zinc-900/50">
-            <div class="text-center">
-                <h3 class="text-xl font-chic italic mb-4">Urmează povestea ta.</h3>
-                <a href="#" class="text-[10px] uppercase tracking-widest border-b border-white pb-2">Începe un Proiect</a>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="fixed bottom-10 left-10 flex items-center gap-4">
-        <span class="text-[10px] text-zinc-600 uppercase tracking-widest">Folosește rotița mouse-ului pentru a naviga în portofoliu</span>
-    </div>
+    </footer>
 
     <script>
         const cursor = document.getElementById('cursor');
+        const glow = document.getElementById('cursor-glow');
+        
         document.addEventListener('mousemove', e => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
+            window.requestAnimationFrame(() => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+                glow.style.left = e.clientX + 'px';
+                glow.style.top = e.clientY + 'px';
+            });
         });
 
-        const scrollTrack = document.getElementById('scrollTrack');
-
-        // Scroll Orizontal Forțat
-        scrollTrack.addEventListener('wheel', (evt) => {
-            evt.preventDefault();
-            scrollTrack.scrollLeft += evt.deltaY;
-        });
-
-        // Click și Drag
-        let isDown = false;
-        let startX;
-        let scrollLeft;
-
-        scrollTrack.addEventListener('mousedown', (e) => {
-            isDown = true;
-            startX = e.pageX - scrollTrack.offsetLeft;
-            scrollLeft = scrollTrack.scrollLeft;
-            scrollTrack.style.cursor = 'grabbing';
-        });
-        scrollTrack.addEventListener('mouseleave', () => {
-            isDown = false;
-            scrollTrack.style.cursor = 'grab';
-        });
-        scrollTrack.addEventListener('mouseup', () => {
-            isDown = false;
-            scrollTrack.style.cursor = 'grab';
-        });
-        scrollTrack.addEventListener('mousemove', (e) => {
-            if(!isDown) return;
-            e.preventDefault();
-            const x = e.pageX - scrollTrack.offsetLeft;
-            const walk = (x - startX) * 2; 
-            scrollTrack.scrollLeft = scrollLeft - walk;
+        document.querySelectorAll('a, .project-card').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.style.transform = 'translate(-50%, -50%) scale(1.3)';
+                glow.style.background = 'radial-gradient(circle, rgba(165, 180, 252, 0.22) 0%, transparent 65%)';
+            });
+            el.addEventListener('mouseleave', () => {
+                cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+                glow.style.background = 'radial-gradient(circle, rgba(165, 180, 252, 0.18) 0%, transparent 65%)';
+            });
         });
     </script>
 </body>
