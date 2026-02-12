@@ -14,100 +14,123 @@
             background-color: #0c0c0c; 
             color: #f4f4f5; 
             margin: 0;
-            overflow: hidden; /* Lock the main body to force viewport scroll */
+            /* Allow vertical scroll but we will handle the "track" */
+            overflow-x: hidden;
         }
         .font-chic { font-family: 'Playfair Display', serif; }
 
-        /* Scroll Container - THE FIX */
-        .project-viewport {
-            display: flex;
-            overflow-x: scroll; /* Changed to scroll */
-            overflow-y: hidden;
-            scroll-snap-type: x mandatory;
-            scroll-behavior: smooth;
+        /* The Scroll Track */
+        .scroll-wrapper {
             width: 100vw;
-            height: 100vh;
-            align-items: center;
-            padding: 0 10vw;
-            gap: 5vw;
+            overflow-x: auto;
+            overflow-y: hidden;
+            white-space: nowrap;
+            padding: 10vh 0;
+            cursor: grab;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
         }
 
-        /* Hide scrollbar visually but keep functionality */
-        .project-viewport::-webkit-scrollbar { display: none; }
-        .project-viewport { -ms-overflow-style: none; scrollbar-width: none; }
+        /* Hide scrollbar */
+        .scroll-wrapper::-webkit-scrollbar { display: none; }
 
-        .project-slide {
-            flex: 0 0 70vw; /* Adjusted for better visibility */
-            height: 65vh;
-            scroll-snap-align: center;
+        .project-item {
+            display: inline-block;
+            width: 45vw; /* Significantly smaller */
+            height: 55vh; /* Shorter for better proportion */
+            margin-left: 5vw;
+            vertical-align: top;
+            white-space: normal; /* Reset for text inside */
             position: relative;
-            border-radius: 2rem;
+            border-radius: 1.5rem;
             overflow: hidden;
-            background: #1a1a1a; /* Fallback color */
+            transition: transform 0.5s ease;
         }
 
-        .medical-tag { color: #818cf8; border: 1px solid rgba(129, 140, 248, 0.4); }
-        .makeup-tag { color: #f472b6; border: 1px solid rgba(244, 114, 182, 0.4); }
+        .project-item:last-child { margin-right: 10vw; }
+        .project-item:hover { transform: translateY(-10px); }
 
-        #cursor { width: 20px; height: 20px; background: #fff; border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; mix-blend-mode: difference; transition: transform 0.2s ease; top: 0; left: 0; }
-        .grain { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: url('https://grainy-gradients.vercel.app/noise.svg'); opacity: 0.05; pointer-events: none; z-index: 100; }
+        .tag {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            padding: 4px 12px;
+            border-radius: 100px;
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+
+        .medical-tag { background: rgba(129, 140, 248, 0.1); color: #818cf8; border: 1px solid rgba(129, 140, 248, 0.2); }
+        .makeup-tag { background: rgba(244, 114, 182, 0.1); color: #f472b6; border: 1px solid rgba(244, 114, 182, 0.2); }
+
+        #cursor { width: 20px; height: 20px; background: #fff; border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; mix-blend-mode: difference; transition: transform 0.2s ease; top:0; left:0;}
     </style>
 </head>
 <body>
     <div id="cursor"></div>
-    <div class="grain"></div>
 
-    <nav class="fixed top-0 w-full z-50 p-10 flex justify-between items-center mix-blend-difference">
-        <a href="index.html" class="text-xl font-bold tracking-[0.2em] text-white">FRESH IDEAS<span class="font-chic italic text-zinc-500 font-light lowercase">.studio</span></a>
+    <nav class="fixed top-0 w-full z-50 p-8 flex justify-between items-center mix-blend-difference">
+        <a href="index.html" class="text-xl font-bold tracking-tighter">FRESH IDEAS<span class="font-chic italic text-zinc-500 font-light">.studio</span></a>
         <div class="flex gap-8 text-[10px] uppercase tracking-widest font-bold">
-            <a href="team.html" class="hover:text-indigo-400 transition text-zinc-300">The 10</a>
-            <a href="index.html" class="hover:text-indigo-400 transition text-zinc-300">Home</a>
+            <a href="team.html" class="hover:text-white transition text-zinc-400">The 10</a>
+            <a href="index.html" class="hover:text-white transition text-zinc-400">Home</a>
         </div>
     </nav>
 
-    <div class="fixed top-32 left-10 z-10 pointer-events-none">
-        <h1 class="text-6xl md:text-8xl font-medium tracking-tighter opacity-20">PORTFOLIO</h1>
+    <div class="pt-32 px-10">
+        <h1 class="text-5xl font-medium tracking-tighter">SELECT <span class="font-chic italic">Works.</span></h1>
     </div>
 
-    <div class="project-viewport" id="slider">
+    <div class="scroll-wrapper" id="scrollTrack">
         
-        <div class="project-slide group">
-            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=1200" class="w-full h-full object-cover grayscale opacity-50 group-hover:opacity-100 group-hover:grayscale-0 transition duration-700" alt="AstraLabs">
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent p-12 flex flex-col justify-end">
-                <span class="medical-tag w-fit px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mb-4">Medical Identity</span>
-                <h2 class="text-5xl font-medium tracking-tighter text-white">AstraLabs</h2>
-                <p class="text-zinc-400 mt-2 max-w-sm text-sm">Visualizing data for next-gen pharma labs.</p>
+        <div class="project-item group">
+            <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700" alt="Pharma">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent p-8 flex flex-col justify-end">
+                <span class="tag medical-tag">Medical Identity</span>
+                <h2 class="text-3xl font-bold text-white">BioTech Lab</h2>
+                <p class="text-zinc-400 text-sm mt-2">Visual systems for pharmaceutical distribution.</p>
             </div>
         </div>
 
-        <div class="project-slide group">
-            <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=1200" class="w-full h-full object-cover grayscale opacity-50 group-hover:opacity-100 group-hover:grayscale-0 transition duration-700" alt="Velvet Noir">
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent p-12 flex flex-col justify-end">
-                <span class="makeup-tag w-fit px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mb-4">Cosmetic Design</span>
-                <h2 class="text-5xl font-medium tracking-tighter text-white">Velvet Noir</h2>
-                <p class="text-zinc-400 mt-2 max-w-sm text-sm">Chic packaging for high-end beauty brands.</p>
+        <div class="project-item group">
+            <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700" alt="Beauty">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent p-8 flex flex-col justify-end">
+                <span class="tag makeup-tag">Cosmetic Artistry</span>
+                <h2 class="text-3xl font-bold text-white">Luna Gloss</h2>
+                <p class="text-zinc-400 text-sm mt-2">Editorial packaging for high-end cosmetics.</p>
             </div>
         </div>
 
-        <div class="project-slide group">
-            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1200" class="w-full h-full object-cover grayscale opacity-50 group-hover:opacity-100 group-hover:grayscale-0 transition duration-700" alt="BioLink">
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent p-12 flex flex-col justify-end">
-                <span class="medical-tag w-fit px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mb-4">Pharma UX</span>
-                <h2 class="text-5xl font-medium tracking-tighter text-white">BioLink Systems</h2>
-                <p class="text-zinc-400 mt-2 max-w-sm text-sm">Streamlined patient interface for medical diagnostics.</p>
+        <div class="project-item group">
+            <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700" alt="Medical">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent p-8 flex flex-col justify-end">
+                <span class="tag medical-tag">Clinic UX</span>
+                <h2 class="text-3xl font-bold text-white">Stellar Clinic</h2>
+                <p class="text-zinc-400 text-sm mt-2">A digital patient experience for skin specialists.</p>
             </div>
         </div>
 
-        <div class="project-slide flex flex-col items-center justify-center text-center bg-zinc-900 border border-white/5">
-            <h3 class="text-3xl font-chic italic mb-6">Outside the Box.</h3>
-            <a href="index.html#contact" class="px-8 py-4 bg-white text-black text-[10px] font-bold uppercase tracking-widest rounded-full hover:bg-indigo-400 hover:text-white transition">Start the Brief</a>
+        <div class="project-item group">
+            <img src="https://images.unsplash.com/photo-1596462502278-27bfdc4033c8?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700" alt="Beauty">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent p-8 flex flex-col justify-end">
+                <span class="tag makeup-tag">Packaging Design</span>
+                <h2 class="text-3xl font-bold text-white">Aura Skin</h2>
+                <p class="text-zinc-400 text-sm mt-2">Sustainable visual architecture for organic beauty.</p>
+            </div>
+        </div>
+
+        <div class="project-item flex items-center justify-center border border-white/10 bg-zinc-900/50">
+            <div class="text-center">
+                <h3 class="text-2xl font-chic italic mb-4">Your Story Next.</h3>
+                <a href="index.html#contact" class="text-[10px] uppercase tracking-widest border-b border-white pb-2">Start Project</a>
+            </div>
         </div>
 
     </div>
 
-    <div class="fixed bottom-10 left-10 text-[10px] uppercase tracking-[0.4em] text-zinc-600 flex items-center gap-4">
-        <div class="w-12 h-px bg-zinc-800"></div>
-        Scroll to Explore Portfolio
+    <div class="fixed bottom-10 left-10 flex items-center gap-4">
+        <span class="text-[10px] text-zinc-600 uppercase tracking-widest">Use Mouse Wheel to Scroll Portfolio</span>
     </div>
 
     <script>
@@ -117,13 +140,40 @@
             cursor.style.top = e.clientY + 'px';
         });
 
-        // Robust Horizontal Scroll for all input types
-        const slider = document.getElementById('slider');
-        slider.addEventListener('wheel', (e) => {
-            if (e.deltaY !== 0) {
-                e.preventDefault();
-                slider.scrollLeft += e.deltaY;
-            }
+        const scrollTrack = document.getElementById('scrollTrack');
+
+        // FORCE Horizontal scroll on mouse wheel
+        scrollTrack.addEventListener('wheel', (evt) => {
+            evt.preventDefault();
+            scrollTrack.scrollLeft += evt.deltaY;
+        });
+
+        // Click and drag to scroll functionality
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        scrollTrack.addEventListener('mousedown', (e) => {
+            isDown = true;
+            scrollTrack.classList.add('active');
+            startX = e.pageX - scrollTrack.offsetLeft;
+            scrollLeft = scrollTrack.scrollLeft;
+            scrollTrack.style.cursor = 'grabbing';
+        });
+        scrollTrack.addEventListener('mouseleave', () => {
+            isDown = false;
+            scrollTrack.style.cursor = 'grab';
+        });
+        scrollTrack.addEventListener('mouseup', () => {
+            isDown = false;
+            scrollTrack.style.cursor = 'grab';
+        });
+        scrollTrack.addEventListener('mousemove', (e) => {
+            if(!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - scrollTrack.offsetLeft;
+            const walk = (x - startX) * 2; 
+            scrollTrack.scrollLeft = scrollLeft - walk;
         });
     </script>
 </body>
