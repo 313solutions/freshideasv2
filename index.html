@@ -11,181 +11,189 @@
     
     <style>
         :root { 
-            --bg: #0c0c0c; 
+            --bg: #080808; 
             --accent: #d4d4d8; 
-            --highlight: #818cf8;
+            --highlight: #a5b4fc;
         }
         body { 
             font-family: 'Space Grotesk', sans-serif; 
             background-color: var(--bg); 
             color: #f4f4f5;
             cursor: none;
+            overflow-x: hidden;
         }
         .font-chic { font-family: 'Playfair Display', serif; }
 
-        /* Cursor sub formă de beculeț semi-transparent */
+        /* Cursor Rafinat - Doar becul și lumina */
         #cursor {
-            width: 30px; 
-            height: 30px;
-            background: rgba(255, 255, 255, 0.2); /* Semi-transparent */
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            border-radius: 50%;
             position: fixed;
             pointer-events: none;
             z-index: 9999;
-            backdrop-filter: blur(4px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
             transform: translate(-50%, -50%);
-            transition: transform 0.1s ease-out;
+            mix-blend-mode: screen;
+            transition: transform 0.15s ease-out;
         }
         
-        /* Iconița de bec în interiorul cursorului */
         #cursor i {
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.8);
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.9);
+            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
         }
 
-        /* Lumina de sub cursor (Glow) */
+        /* Lumina de sub cursor - Mai difuză și elegantă */
         #cursor-glow {
-            width: 350px; 
-            height: 350px;
-            background: radial-gradient(circle, rgba(129, 140, 248, 0.15) 0%, transparent 70%);
+            width: 450px; 
+            height: 450px;
+            background: radial-gradient(circle, rgba(165, 180, 252, 0.12) 0%, transparent 75%);
             position: fixed;
             pointer-events: none;
             z-index: 9998;
             transform: translate(-50%, -50%);
-            transition: width 0.3s, height 0.3s;
         }
 
+        /* Reveal Image cu Overlay Elegant */
         .reveal-img {
             overflow: hidden;
             position: relative;
-            clip-path: inset(0 0 0 0);
-            transition: clip-path 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+            transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
         }
-        .reveal-img:hover {
-            clip-path: inset(5% 5% 5% 5%);
-        }
-
-        .grain {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: url('https://grainy-gradients.vercel.app/noise.svg');
-            opacity: 0.03; pointer-events: none; z-index: 100;
+        .reveal-img::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.5));
+            opacity: 0.6;
         }
 
+        /* Text Outline subtil */
         .text-outline {
             color: transparent;
-            -webkit-text-stroke: 1px rgba(255,255,255,0.2);
+            -webkit-text-stroke: 1px rgba(255,255,255,0.15);
+        }
+
+        /* Gradient subtil pe fundal pentru a nu fi doar negru plat */
+        .bg-vignette {
+            background: radial-gradient(circle at 50% 50%, #0c0c0c 0%, #050505 100%);
         }
     </style>
 </head>
-<body>
+<body class="bg-vignette">
 
     <div id="cursor"><i class="fa-solid fa-lightbulb"></i></div>
     <div id="cursor-glow"></div>
-    <div class="grain"></div>
 
-    <nav class="fixed top-0 left-0 w-full z-50 px-10 py-8 flex justify-between items-center bg-transparent">
-        <a href="#" class="text-xl font-bold tracking-[0.2em] flex items-center gap-4">
-            <span class="w-2 h-2 bg-indigo-500 rounded-full animate-pulse"></span>
+    <nav class="fixed top-0 left-0 w-full z-50 px-10 py-10 flex justify-between items-center bg-transparent backdrop-blur-sm">
+        <a href="index.html" class="text-xl font-bold tracking-[0.3em] flex items-center gap-4">
+            <span class="w-1.5 h-1.5 bg-indigo-400 rounded-full shadow-[0_0_10px_#818cf8]"></span>
             FRESH IDEAS<span class="font-chic italic text-zinc-500 font-light lowercase">.studio</span>
         </a>
-        <div class="hidden md:flex gap-12 text-[10px] uppercase tracking-[0.3em] font-medium text-zinc-400">
-            <a href="#proiecte" class="hover:text-white transition">Proiecte</a>
-            <a href="#expertiza" class="hover:text-white transition">Expertiză</a>
-            <a href="#contact" class="text-indigo-400">Colaborare</a>
+        <div class="hidden md:flex gap-16 text-[11px] uppercase tracking-[0.4em] font-semibold text-zinc-400">
+            <a href="projects.html" class="hover:text-indigo-300 transition-colors">Proiecte</a>
+            <a href="#expertiza" class="hover:text-white transition-colors">Expertiză</a>
+            <a href="#contact" class="text-indigo-400 border-b border-indigo-400/30 pb-1">Colaborare</a>
         </div>
     </nav>
 
     <main>
-        <section class="min-h-screen flex items-center px-10 pt-20">
-            <div class="max-w-7xl mx-auto w-full grid lg:grid-cols-12 gap-10">
+        <section class="min-h-screen flex items-center px-10 pt-32">
+            <div class="max-w-7xl mx-auto w-full grid lg:grid-cols-12 gap-16">
                 <div class="lg:col-span-8">
-                    <h1 class="text-[clamp(3.5rem,8vw,9rem)] leading-[0.9] font-medium tracking-tighter">
-                        ESTETICĂ <br> <span class="font-chic italic text-indigo-400">Chic</span> <br> 
+                    <h1 class="text-[clamp(4rem,9vw,10rem)] leading-[0.85] font-medium tracking-tighter">
+                        ESTETICĂ <br> <span class="font-chic italic text-indigo-300">Chic</span> <br> 
                         <span class="text-outline">SUFLET</span> <br> CLINIC.
                     </h1>
                 </div>
-                <div class="lg:col-span-4 flex flex-col justify-end pb-10">
-                    <p class="text-lg text-zinc-400 leading-relaxed font-light mb-8">
-                        Fresh Ideas este un colectiv de design boutique. Suntem specializați în intersecția de înaltă miza dintre <span class="text-white">Inovația Medicală</span> și <span class="text-white">Frumusețea de Lux</span>.
-                    </p>
-                    <div class="flex gap-4">
-                        <div class="w-12 h-px bg-zinc-700 mt-3"></div>
-                        <span class="text-[10px] uppercase tracking-widest text-zinc-500">Gândim în afara cutiei <br>din 2016</span>
+                <div class="lg:col-span-4 flex flex-col justify-end pb-12">
+                    <div class="space-y-8">
+                        <p class="text-xl text-zinc-400 leading-relaxed font-light">
+                            Un studio de creație boutique, definind standardele vizuale la granița dintre <span class="text-white font-medium border-b border-zinc-700">rigoarea medicală</span> și <span class="text-white font-medium border-b border-zinc-700">eleganța luxury</span>.
+                        </p>
+                        <div class="flex items-center gap-6">
+                            <span class="text-[10px] uppercase tracking-[0.5em] text-zinc-600 font-bold">Est. 2016</span>
+                            <div class="h-[1px] flex-grow bg-zinc-800"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="expertiza" class="py-40 bg-zinc-950 border-y border-white/5">
+        <section id="expertiza" class="py-40 bg-[#0a0a0a]">
             <div class="max-w-7xl mx-auto px-10">
-                <div class="grid md:grid-cols-2 gap-20">
-                    <div class="group">
-                        <div class="reveal-img aspect-[4/5] bg-zinc-900 mb-10">
-                            <img src="https://images.unsplash.com/photo-1585435557343-3b092031a831?q=80&w=1200" class="w-full h-full object-cover grayscale opacity-50 group-hover:opacity-100 group-hover:grayscale-0 transition duration-1000" alt="Design Farmaceutic">
-                        </div>
-                        <h3 class="text-3xl font-chic italic mb-4">Știință de Precizie</h3>
-                        <p class="text-zinc-500 max-w-sm mb-6 uppercase text-[10px] tracking-widest font-bold">Medical & Farmaceutic</p>
-                        <p class="text-zinc-400 leading-relaxed">Ambalaje conforme reglementărilor, simplificarea datelor vizuale și construirea încrederii clinice pentru laboratoare farma independente.</p>
-                    </div>
-
-                    <div class="group md:mt-40">
-                        <div class="reveal-img aspect-[4/5] bg-zinc-900 mb-10">
-                            <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1200" class="w-full h-full object-cover grayscale opacity-50 group-hover:opacity-100 group-hover:grayscale-0 transition duration-1000" alt="Design Cosmetice">
-                        </div>
-                        <h3 class="text-3xl font-chic italic mb-4">Alură Vizuală</h3>
-                        <p class="text-zinc-500 max-w-sm mb-6 uppercase text-[10px] tracking-widest font-bold">Cosmetice & Parfumuri</p>
-                        <p class="text-zinc-400 leading-relaxed">Branding editorial de înaltă clasă și arhitectură de ambalaj care captează atenția într-un peisaj de retail aglomerat.</p>
-                    </div>
+                <div class="flex justify-between items-end mb-24">
+                    <h2 class="text-4xl font-chic italic">Sectoare de Focus</h2>
+                    <p class="text-zinc-500 text-[10px] uppercase tracking-[0.3em]">Expertiza noastră de nișă</p>
                 </div>
-            </div>
-        </section>
-
-        <section id="about" class="py-40 px-10">
-            <div class="max-w-5xl mx-auto text-center">
-                <span class="text-indigo-400 text-xs font-bold tracking-[0.5em] block mb-10">NUCLEUL CREATIV</span>
-                <h2 class="text-5xl md:text-7xl font-medium tracking-tighter mb-16">
-                    Perspective <br> <span class="font-chic italic">fără limite.</span>
-                </h2>
                 
-                <p class="mt-20 text-zinc-400 text-xl max-w-2xl mx-auto leading-relaxed italic">
-                    "Suntem suficient de mici pentru a ne păsa de sufletul brandului tău, dar suficient de experimentați pentru a gestiona complexitatea ambalajelor farmaceutice globale."
-                </p>
+                <div class="grid md:grid-cols-2 gap-32">
+                    <div class="group relative">
+                        <div class="reveal-img aspect-[3/4] rounded-2xl mb-12 shadow-2xl overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1585435557343-3b092031a831?q=80&w=1200" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-[2s] ease-out" alt="Medical Design">
+                        </div>
+                        <div class="space-y-4">
+                            <h3 class="text-4xl font-light tracking-tight">Știință de Precizie</h3>
+                            <p class="text-zinc-500 text-xs uppercase tracking-widest">Medical & Farmaceutic</p>
+                            <p class="text-zinc-400 leading-relaxed max-w-sm">Design bazat pe rigoare, transformând datele complexe în identități vizuale care inspiră încredere absolută.</p>
+                        </div>
+                    </div>
+
+                    <div class="group relative md:mt-48">
+                        <div class="reveal-img aspect-[3/4] rounded-2xl mb-12 shadow-2xl overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1200" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-[2s] ease-out" alt="Luxury Beauty">
+                        </div>
+                        <div class="space-y-4">
+                            <h3 class="text-4xl font-light tracking-tight">Alură Vizuală</h3>
+                            <p class="text-zinc-500 text-xs uppercase tracking-widest">Cosmetice & Parfumuri</p>
+                            <p class="text-zinc-400 leading-relaxed max-w-sm">Arhitectură de brand premium unde estetica devine principalul motor de dorință în segmentul luxury.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section id="proiecte" class="py-20 px-10">
-            <div class="max-w-[1600px] mx-auto">
-                <div class="relative w-full aspect-video bg-zinc-900 rounded-[3rem] overflow-hidden border border-white/5 group shadow-2xl">
-                    <div class="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-all duration-700 flex flex-col items-center justify-center">
-                        <div class="w-24 h-24 border border-white/20 rounded-full flex items-center justify-center group-hover:scale-110 transition duration-500">
-                             <i class="fa-solid fa-play text-white text-2xl"></i>
-                        </div>
-                        <p class="mt-8 text-[10px] tracking-[0.4em] uppercase font-bold text-white opacity-50 group-hover:opacity-100 transition">Vezi Portofoliul</p>
+        <section class="py-60 px-10 relative overflow-hidden">
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center opacity-[0.02] select-none pointer-events-none">
+                <span class="text-[20rem] font-bold tracking-tighter">FRESH</span>
+            </div>
+            <div class="max-w-4xl mx-auto text-center relative z-10">
+                <p class="text-3xl md:text-5xl font-light leading-snug text-zinc-300">
+                    "Suntem suficient de mici pentru a ne păsa de <span class="font-chic italic text-white">sufletul</span> brandului tău, dar suficient de experimentați pentru a gestiona complexitatea globală."
+                </p>
+                <div class="mt-16 inline-block w-12 h-px bg-indigo-400"></div>
+            </div>
+        </section>
+
+        <section class="py-20 px-10">
+            <div class="max-w-7xl mx-auto">
+                <a href="projects.html" class="block group relative w-full aspect-[21/9] rounded-[2rem] overflow-hidden">
+                    <div class="absolute inset-0 bg-zinc-900">
+                         <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1600" class="w-full h-full object-cover opacity-30 group-hover:opacity-50 group-hover:scale-105 transition duration-[3s]" alt="Showcase">
                     </div>
-                </div>
+                    <div class="absolute inset-0 flex flex-col items-center justify-center space-y-6">
+                        <div class="w-20 h-20 border border-white/10 rounded-full flex items-center justify-center backdrop-blur-md group-hover:border-indigo-400/50 group-hover:scale-110 transition-all duration-500">
+                             <i class="fa-solid fa-arrow-right -rotate-45 text-white text-xl group-hover:rotate-0 transition-transform duration-500"></i>
+                        </div>
+                        <span class="text-xs uppercase tracking-[0.6em] text-white/60 group-hover:text-white transition-colors">Explorează Proiectele</span>
+                    </div>
+                </a>
             </div>
         </section>
     </main>
 
-    <footer id="contact" class="py-40 px-10 border-t border-white/5 bg-[#0a0a0a]">
-        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20">
+    <footer id="contact" class="py-40 px-10 border-t border-white/5 bg-[#050505]">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-32">
             <div>
-                <h2 class="text-6xl font-medium tracking-tighter mb-10">Ești gata pentru <br>ceva <span class="font-chic italic">fresh?</span></h2>
-                <a href="mailto:office@freshideas.design" class="text-3xl font-light text-zinc-500 hover:text-indigo-400 transition">office@freshideas.design</a>
+                <h2 class="text-7xl font-medium tracking-tighter mb-12">Începe <br><span class="font-chic italic text-indigo-300">proaspăt.</span></h2>
+                <a href="mailto:office@freshideas.design" class="text-2xl font-light text-zinc-500 hover:text-white transition-all border-b border-zinc-800 pb-2">office@freshideas.design</a>
             </div>
-            <div class="flex flex-col justify-between">
-                <div class="flex gap-12 text-[10px] font-bold uppercase tracking-widest text-zinc-600">
-                    <a href="#" class="hover:text-white transition">Instagram</a>
-                    <a href="#" class="hover:text-white transition">Behance</a>
-                    <a href="#" class="hover:text-white transition">Dribbble</a>
+            <div class="flex flex-col justify-between items-start md:items-end">
+                <div class="flex gap-12 text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-600">
+                    <a href="#" class="hover:text-white transition-colors">Instagram</a>
+                    <a href="#" class="hover:text-white transition-colors">Behance</a>
+                    <a href="#" class="hover:text-white transition-colors">Dribbble</a>
                 </div>
-                <div class="mt-20">
-                    <p class="text-zinc-600 text-xs">FRESH IDEAS — STUDIO BOUTIQUE</p>
-                    <p class="text-zinc-800 text-xs mt-2 uppercase font-bold">Echipă Mică. Impact Mare. București & Worldwide.</p>
+                <div class="mt-32 text-left md:text-right">
+                    <p class="text-zinc-700 text-[10px] tracking-widest uppercase mb-4">Fresh Ideas Studio © 2026</p>
+                    <p class="text-zinc-500 text-xs italic">Creativitate Boutique. Impact Global.</p>
                 </div>
             </div>
         </div>
@@ -196,7 +204,6 @@
         const glow = document.getElementById('cursor-glow');
         
         document.addEventListener('mousemove', e => {
-            // Folosim requestAnimationFrame pentru performanță
             window.requestAnimationFrame(() => {
                 cursor.style.left = e.clientX + 'px';
                 cursor.style.top = e.clientY + 'px';
@@ -205,19 +212,15 @@
             });
         });
 
-        // Efect de hover pentru elemente interactive
+        // Hover animat pentru elementele interactive
         document.querySelectorAll('a, button, .group').forEach(el => {
             el.addEventListener('mouseenter', () => {
-                cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
-                cursor.style.background = 'rgba(255, 255, 255, 0.4)';
-                glow.style.width = '500px';
-                glow.style.height = '500px';
+                cursor.style.transform = 'translate(-50%, -50%) scale(1.4)';
+                glow.style.background = 'radial-gradient(circle, rgba(165, 180, 252, 0.2) 0%, transparent 75%)';
             });
             el.addEventListener('mouseleave', () => {
                 cursor.style.transform = 'translate(-50%, -50%) scale(1)';
-                cursor.style.background = 'rgba(255, 255, 255, 0.2)';
-                glow.style.width = '350px';
-                glow.style.height = '350px';
+                glow.style.background = 'radial-gradient(circle, rgba(165, 180, 252, 0.12) 0%, transparent 75%)';
             });
         });
     </script>
