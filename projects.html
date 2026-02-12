@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ro">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Work | Fresh Ideas Studio</title>
+    <title>Portofoliu | Fresh Ideas Studio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Playfair+Display:ital,wght@0,700;1,500&display=swap" rel="stylesheet">
@@ -14,33 +14,34 @@
             background-color: #0c0c0c; 
             color: #f4f4f5; 
             margin: 0;
-            /* Allow vertical scroll but we will handle the "track" */
-            overflow-x: hidden;
+            /* Blocăm scroll-ul pe tot corpul paginii pentru a preveni fuga în jos */
+            overflow: hidden; 
+            height: 100vh;
         }
         .font-chic { font-family: 'Playfair Display', serif; }
 
-        /* The Scroll Track */
+        /* Zona de Scroll Orizontal */
         .scroll-wrapper {
             width: 100vw;
             overflow-x: auto;
             overflow-y: hidden;
             white-space: nowrap;
-            padding: 10vh 0;
+            padding: 5vh 0;
             cursor: grab;
             scroll-behavior: smooth;
             -webkit-overflow-scrolling: touch;
         }
 
-        /* Hide scrollbar */
+        /* Ascundere scrollbar */
         .scroll-wrapper::-webkit-scrollbar { display: none; }
 
         .project-item {
             display: inline-block;
-            width: 45vw; /* Significantly smaller */
-            height: 55vh; /* Shorter for better proportion */
-            margin-left: 5vw;
+            width: 30vw; /* Dimensiune redusă pentru a vedea mai multe proiecte */
+            height: 50vh; 
+            margin-left: 3vw;
             vertical-align: top;
-            white-space: normal; /* Reset for text inside */
+            white-space: normal; 
             position: relative;
             border-radius: 1.5rem;
             overflow: hidden;
@@ -71,66 +72,66 @@
     <div id="cursor"></div>
 
     <nav class="fixed top-0 w-full z-50 p-8 flex justify-between items-center mix-blend-difference">
-        <a href="index.html" class="text-xl font-bold tracking-tighter">FRESH IDEAS<span class="font-chic italic text-zinc-500 font-light">.studio</span></a>
+        <a href="#" class="text-xl font-bold tracking-tighter">FRESH IDEAS<span class="font-chic italic text-zinc-500 font-light">.studio</span></a>
         <div class="flex gap-8 text-[10px] uppercase tracking-widest font-bold">
-            <a href="team.html" class="hover:text-white transition text-zinc-400">The 10</a>
-            <a href="index.html" class="hover:text-white transition text-zinc-400">Home</a>
+            <a href="#" class="hover:text-white transition text-zinc-400">Echipa</a>
+            <a href="#" class="hover:text-white transition text-zinc-400">Acasă</a>
         </div>
     </nav>
 
     <div class="pt-32 px-10">
-        <h1 class="text-5xl font-medium tracking-tighter">SELECT <span class="font-chic italic">Works.</span></h1>
+        <h1 class="text-5xl font-medium tracking-tighter">PROIECTE <span class="font-chic italic">Selectate.</span></h1>
     </div>
 
     <div class="scroll-wrapper" id="scrollTrack">
         
         <div class="project-item group">
-            <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700" alt="Pharma">
+            <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700" alt="BioTech">
             <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent p-8 flex flex-col justify-end">
-                <span class="tag medical-tag">Medical Identity</span>
-                <h2 class="text-3xl font-bold text-white">BioTech Lab</h2>
-                <p class="text-zinc-400 text-sm mt-2">Visual systems for pharmaceutical distribution.</p>
+                <span class="tag medical-tag">Identitate Medicală</span>
+                <h2 class="text-2xl font-bold text-white">BioTech Lab</h2>
+                <p class="text-zinc-400 text-sm mt-2">Sisteme vizuale pentru distribuție farmaceutică.</p>
             </div>
         </div>
 
         <div class="project-item group">
-            <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700" alt="Beauty">
+            <img src="https://images.unsplash.com/photo-1625093765161-073849767664?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700" alt="AVON">
             <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent p-8 flex flex-col justify-end">
-                <span class="tag makeup-tag">Cosmetic Artistry</span>
-                <h2 class="text-3xl font-bold text-white">Luna Gloss</h2>
-                <p class="text-zinc-400 text-sm mt-2">Editorial packaging for high-end cosmetics.</p>
+                <span class="tag makeup-tag">Artă Cosmetică</span>
+                <h2 class="text-2xl font-bold text-white">AVON Beauty</h2>
+                <p class="text-zinc-400 text-sm mt-2">Design de ambalaj editorial pentru noua gamă.</p>
             </div>
         </div>
 
         <div class="project-item group">
-            <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700" alt="Medical">
+            <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700" alt="Clinic">
             <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent p-8 flex flex-col justify-end">
-                <span class="tag medical-tag">Clinic UX</span>
-                <h2 class="text-3xl font-bold text-white">Stellar Clinic</h2>
-                <p class="text-zinc-400 text-sm mt-2">A digital patient experience for skin specialists.</p>
+                <span class="tag medical-tag">UX Clinică</span>
+                <h2 class="text-2xl font-bold text-white">Stellar Clinic</h2>
+                <p class="text-zinc-400 text-sm mt-2">Experiență digitală pentru pacienți dermato.</p>
             </div>
         </div>
 
         <div class="project-item group">
-            <img src="https://images.unsplash.com/photo-1596462502278-27bfdc4033c8?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700" alt="Beauty">
+            <img src="https://images.unsplash.com/photo-1596462502278-27bfdc4033c8?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700" alt="Aura">
             <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent p-8 flex flex-col justify-end">
-                <span class="tag makeup-tag">Packaging Design</span>
-                <h2 class="text-3xl font-bold text-white">Aura Skin</h2>
-                <p class="text-zinc-400 text-sm mt-2">Sustainable visual architecture for organic beauty.</p>
+                <span class="tag makeup-tag">Design Ambalaj</span>
+                <h2 class="text-2xl font-bold text-white">Aura Skin</h2>
+                <p class="text-zinc-400 text-sm mt-2">Arhitectură vizuală sustenabilă pentru beauty organic.</p>
             </div>
         </div>
 
         <div class="project-item flex items-center justify-center border border-white/10 bg-zinc-900/50">
             <div class="text-center">
-                <h3 class="text-2xl font-chic italic mb-4">Your Story Next.</h3>
-                <a href="index.html#contact" class="text-[10px] uppercase tracking-widest border-b border-white pb-2">Start Project</a>
+                <h3 class="text-xl font-chic italic mb-4">Urmează povestea ta.</h3>
+                <a href="#" class="text-[10px] uppercase tracking-widest border-b border-white pb-2">Începe un Proiect</a>
             </div>
         </div>
 
     </div>
 
     <div class="fixed bottom-10 left-10 flex items-center gap-4">
-        <span class="text-[10px] text-zinc-600 uppercase tracking-widest">Use Mouse Wheel to Scroll Portfolio</span>
+        <span class="text-[10px] text-zinc-600 uppercase tracking-widest">Folosește rotița mouse-ului pentru a naviga în portofoliu</span>
     </div>
 
     <script>
@@ -142,20 +143,19 @@
 
         const scrollTrack = document.getElementById('scrollTrack');
 
-        // FORCE Horizontal scroll on mouse wheel
+        // Scroll Orizontal Forțat
         scrollTrack.addEventListener('wheel', (evt) => {
             evt.preventDefault();
             scrollTrack.scrollLeft += evt.deltaY;
         });
 
-        // Click and drag to scroll functionality
+        // Click și Drag
         let isDown = false;
         let startX;
         let scrollLeft;
 
         scrollTrack.addEventListener('mousedown', (e) => {
             isDown = true;
-            scrollTrack.classList.add('active');
             startX = e.pageX - scrollTrack.offsetLeft;
             scrollLeft = scrollTrack.scrollLeft;
             scrollTrack.style.cursor = 'grabbing';
